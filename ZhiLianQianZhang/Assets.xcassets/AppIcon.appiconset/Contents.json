@@ -37,25 +37,23 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "58x58-1.png",
+      "filename" : "120x120-1.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "114x114.png",
+      "filename" : "180x180.png",
       "scale" : "3x"
     },
     {
-      "size" : "20x20",
       "idiom" : "ipad",
-      "filename" : "120x120-1.png",
+      "size" : "20x20",
       "scale" : "1x"
     },
     {
-      "size" : "20x20",
       "idiom" : "ipad",
-      "filename" : "180x180.png",
+      "size" : "20x20",
       "scale" : "2x"
     },
     {
