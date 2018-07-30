@@ -29,7 +29,7 @@ static DataService *_data;
                 withMethod:(NSString *)method
                withParames:(NSDictionary *)parames
                 withResult:(DataBlock)block {
-
+    NSLog(@"请求URL:%@", stringURL);
     //1.获取URL
 //    NSURL *url = [NSURL URLWithString:stringURL];
     

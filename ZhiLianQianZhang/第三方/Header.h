@@ -13,7 +13,7 @@
 //#define URL @"http://192.168.0.113:8080"
 
 #pragma mark - 外网
-#define URL @"http://47.92.162.240/"
+#define URL @"http://47.105.60.120:8080/" 
 
 #pragma mark - 登录
 #define URL_DengLU_ (URL@"/Challane/challane/challaneUser/userLogin?")
