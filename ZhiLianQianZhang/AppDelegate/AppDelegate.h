@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "HomeViewController.h"
 #import "WXApi.h"
+
+extern BOOL isQQNotWeixin;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate,WXApiDelegate> {
     
     HomeViewController *_Home_View;

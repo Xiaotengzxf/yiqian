@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,8 +28,14 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kwy-3n-1lN">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_new_login_bg" translatesAutoresizingMaskIntoConstraints="NO" id="qKu-6k-cj8">
+                            <rect key="frame" x="0.0" y="-13" width="375" height="693"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="qKu-6k-cj8" secondAttribute="height" multiplier="750:1385" id="mBd-Vd-7d9"/>
+                            </constraints>
+                        </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lUN-87-aMe">
-                            <rect key="frame" x="20" y="495" width="155" height="50"/>
+                            <rect key="frame" x="20" y="510" width="155" height="50"/>
                             <subviews>
                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X16-le-PSD">
                                     <rect key="frame" x="1" y="1" width="153" height="48"/>
@@ -63,7 +70,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j82-wa-8q8">
-                            <rect key="frame" x="200" y="495" width="155" height="50"/>
+                            <rect key="frame" x="200" y="510" width="155" height="50"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kSL-fb-O1R">
                                     <rect key="frame" x="1" y="1" width="153" height="48"/>
@@ -100,27 +107,6 @@
                                 <constraint firstAttribute="width" constant="155" id="xlk-KN-bqf"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v3f-6D-Oki">
-                            <rect key="frame" x="67" y="147" width="241" height="158"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="denglu1.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gev-PV-x4f">
-                                    <rect key="frame" x="78" y="18" width="85" height="85"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="智联电子签章" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bix-8B-Ae4">
-                                    <rect key="frame" x="66" y="119" width="108" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="241" id="UqH-Zz-CE7"/>
-                                <constraint firstAttribute="height" constant="158" id="VPh-ql-lsp"/>
-                            </constraints>
-                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="体验一下&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLR-TJ-gFl">
                             <rect key="frame" x="276" y="29" width="83" height="21"/>
                             <constraints>
@@ -132,7 +118,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbA-AT-MOS">
-                            <rect key="frame" x="0.0" y="554" width="375" height="98"/>
+                            <rect key="frame" x="0.0" y="569" width="375" height="98"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="登录勾.png" translatesAutoresizingMaskIntoConstraints="NO" id="Sw1-QL-dG8">
                                     <rect key="frame" x="24" y="14" width="18" height="18"/>
@@ -154,22 +140,6 @@
                                         <action selector="Self_FuWu_TiaoKuan:" destination="-1" eventType="touchUpInside" id="XMv-Hu-2gu"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="及" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aa-47-SaH">
-                                    <rect key="frame" x="242" y="11" width="16" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MdH-qQ-YWz">
-                                    <rect key="frame" x="261" y="7" width="88" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <state key="normal" title="《隐私条款》"/>
-                                    <connections>
-                                        <action selector="Self_Button_YinSiTiaoKuan_Click:" destination="-1" eventType="touchUpInside" id="eEZ-jL-O17"/>
-                                    </connections>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -189,17 +159,19 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="sbA-AT-MOS" firstAttribute="leading" secondItem="kwy-3n-1lN" secondAttribute="leading" id="07J-4H-C5b"/>
                         <constraint firstAttribute="trailing" secondItem="rLR-TJ-gFl" secondAttribute="trailing" constant="16" id="12T-Ba-4OA"/>
                         <constraint firstAttribute="trailing" secondItem="sbA-AT-MOS" secondAttribute="trailing" id="1Et-hg-8hI"/>
                         <constraint firstItem="sbA-AT-MOS" firstAttribute="leading" secondItem="kwy-3n-1lN" secondAttribute="leading" id="2l2-xd-NTK"/>
                         <constraint firstItem="sbA-AT-MOS" firstAttribute="top" secondItem="lUN-87-aMe" secondAttribute="bottom" constant="9" id="70L-vi-OWq"/>
-                        <constraint firstItem="lUN-87-aMe" firstAttribute="top" secondItem="v3f-6D-Oki" secondAttribute="bottom" constant="190" id="AlI-9Z-udr"/>
-                        <constraint firstItem="v3f-6D-Oki" firstAttribute="centerX" secondItem="kwy-3n-1lN" secondAttribute="centerX" id="Lft-Ey-H6d"/>
+                        <constraint firstAttribute="bottom" secondItem="sbA-AT-MOS" secondAttribute="bottom" id="7K0-dS-Hr9"/>
+                        <constraint firstItem="qKu-6k-cj8" firstAttribute="leading" secondItem="kwy-3n-1lN" secondAttribute="leading" id="8eM-nt-aFs"/>
+                        <constraint firstItem="qKu-6k-cj8" firstAttribute="centerY" secondItem="kwy-3n-1lN" secondAttribute="centerY" id="CHK-WN-vIe"/>
                         <constraint firstItem="Fpi-dK-Iex" firstAttribute="top" secondItem="kwy-3n-1lN" secondAttribute="top" constant="24" id="NsL-ka-nCA"/>
-                        <constraint firstItem="j82-wa-8q8" firstAttribute="top" secondItem="v3f-6D-Oki" secondAttribute="bottom" constant="190" id="Qdb-om-Hmb"/>
                         <constraint firstAttribute="trailing" secondItem="Fpi-dK-Iex" secondAttribute="trailing" constant="16" id="YlA-eo-p2P"/>
-                        <constraint firstItem="v3f-6D-Oki" firstAttribute="top" secondItem="rLR-TJ-gFl" secondAttribute="bottom" constant="97" id="c5x-Bz-Vc4"/>
                         <constraint firstAttribute="trailing" secondItem="j82-wa-8q8" secondAttribute="trailing" constant="20" id="g3H-rB-X7h"/>
+                        <constraint firstAttribute="trailing" secondItem="qKu-6k-cj8" secondAttribute="trailing" id="llp-oD-o5K"/>
+                        <constraint firstItem="j82-wa-8q8" firstAttribute="centerY" secondItem="lUN-87-aMe" secondAttribute="centerY" id="sxK-u8-j5N"/>
                         <constraint firstItem="lUN-87-aMe" firstAttribute="leading" secondItem="kwy-3n-1lN" secondAttribute="leading" constant="20" id="t3v-ib-h3Q"/>
                         <constraint firstItem="rLR-TJ-gFl" firstAttribute="top" secondItem="kwy-3n-1lN" secondAttribute="top" constant="29" id="zQJ-De-mKt"/>
                     </constraints>
@@ -217,9 +189,9 @@
         </view>
     </objects>
     <resources>
-        <image name="denglu1.png" width="195" height="175"/>
         <image name="denglu2.png" width="51" height="46"/>
         <image name="denglu3.png" width="62" height="49"/>
+        <image name="pic_new_login_bg" width="750" height="1385"/>
         <image name="登录勾.png" width="59" height="59"/>
     </resources>
 </document>

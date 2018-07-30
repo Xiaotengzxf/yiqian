@@ -13,9 +13,10 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 #import <AlipaySDK/AlipaySDK.h>
-#import "WXApi.h"
 
-@interface AppDelegate () <WXApiDelegate,TencentSessionDelegate,QQApiInterfaceDelegate>
+BOOL isQQNotWeixin = NO;
+
+@interface AppDelegate () <WXApiDelegate, QQApiInterfaceDelegate>
 
 @end
 
@@ -38,42 +39,32 @@
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     
-    [WXApi handleOpenURL:url delegate:self];
-    
-    return YES;
+    if ([url.host isEqualToString:@"qzapp"]) {
+        return [TencentOAuth HandleOpenURL:url];
+    }else {
+        return [WXApi handleOpenURL:url delegate:self];
+    }
 }
-
-//-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-//
-//    NSLog(@"%@",sourceApplication);
-//
-//    if ([url.host isEqualToString:@"pay"]) {
-//
-//        return [WXApi handleOpenURL:url delegate:self];
-//
-//    }else {
-//
-//        return [TencentOAuth HandleOpenURL:url];
-//
-//    }
-//
-//}
 
 -(void) onResp:(BaseResp*)resp
 {
-    NSLog(@"vvvvvv");
-    
-    SendAuthResp *aresp = (SendAuthResp *)resp;
-    
-    if(aresp.errCode== 0 && [aresp.state isEqualToString:@"App"])
-    {
-        NSString *code = aresp.code;
+    if (isQQNotWeixin) {
         
-        NSLog(@"%@",code);
+    } else {
+        SendAuthResp *aresp = (SendAuthResp *)resp;
         
-        [self getWeiXinOpenId:code];
+        if(aresp.errCode== 0 && [aresp.state isEqualToString:@"App"]) {
+            NSString *code = aresp.code;
+            NSLog(@"%@",code);
+            [self getWeiXinOpenId:code];
+        }
     }
 }
+
+- (void)isOnlineResponse:(NSDictionary *)response {
+    NSLog(@"qq登录回调：%@", response);
+}
+
 - (void)getWeiXinOpenId:(NSString *)code{
     
     NSString *url =[NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",@"wxff10f21436f38794",@"e3382ce0684f8b2fa79d929e21f9e15c",code];
@@ -190,9 +181,10 @@
             }
             NSLog(@"授权结果 authCode = %@", authCode?:@"");
         }];
-    } else {
+    }else if ([url.host isEqualToString:@"qzapp"]) {
+        return [TencentOAuth HandleOpenURL:url];
+    }else {
         
-        NSLog(@"hh");
 //
 //        SendAuthResp *aresp = (SendAuthResp *)resp;
 //
@@ -208,19 +200,6 @@
     
     return YES;
 }
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-
-    
-    if ([url.host isEqualToString:@"pay"]) {
-        
-        return [WXApi handleOpenURL:url delegate:self];
-        
-    }else {
-        
-        return [TencentOAuth HandleOpenURL:url];
-        
-    }}
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -242,5 +221,10 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (void)onReq:(QQBaseReq *)req {
+    NSLog(@"QQ或微信登录请求");
+}
+
 
 @end
