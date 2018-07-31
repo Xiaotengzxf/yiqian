@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,23 +32,25 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="unx-u6-cfO">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="176"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0q-EV-iQh">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0q-EV-iQh">
                                     <rect key="frame" x="0.0" y="0.0" width="76" height="70"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="70" id="FBd-PG-Fp2"/>
+                                        <constraint firstAttribute="width" constant="76" id="f4u-8j-XBI"/>
+                                    </constraints>
                                     <connections>
                                         <action selector="Self_Button_Pop_Click:" destination="-1" eventType="touchUpInside" id="4FH-Y3-4Cz"/>
                                     </connections>
                                 </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="返回箭头.png" translatesAutoresizingMaskIntoConstraints="NO" id="skM-Dq-x51">
-                                    <rect key="frame" x="20" y="24" width="34" height="29"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="返回箭头.png" translatesAutoresizingMaskIntoConstraints="NO" id="skM-Dq-x51">
+                                    <rect key="frame" x="21" y="20.5" width="34" height="29"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="29" id="0a5-Mi-Dzf"/>
+                                        <constraint firstAttribute="width" constant="34" id="HDO-VZ-Vnw"/>
+                                    </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDW-TL-2ib">
-                                    <rect key="frame" x="152" y="29" width="72" height="21"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="72" id="X6j-B4-OTD"/>
-                                        <constraint firstAttribute="height" constant="21" id="aV1-Z2-boG"/>
-                                    </constraints>
+                                    <rect key="frame" x="153.5" y="24.5" width="69.5" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -69,10 +71,14 @@
                                 </button>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="cDW-TL-2ib" firstAttribute="top" secondItem="unx-u6-cfO" secondAttribute="top" constant="29" id="Csv-Jn-CT4"/>
+                                <constraint firstItem="skM-Dq-x51" firstAttribute="centerY" secondItem="G0q-EV-iQh" secondAttribute="centerY" id="D0w-8m-Ppw"/>
+                                <constraint firstItem="cDW-TL-2ib" firstAttribute="centerY" secondItem="G0q-EV-iQh" secondAttribute="centerY" id="Eec-uN-a5e"/>
+                                <constraint firstItem="G0q-EV-iQh" firstAttribute="leading" secondItem="unx-u6-cfO" secondAttribute="leading" id="IC5-0L-T0r"/>
                                 <constraint firstAttribute="trailing" secondItem="jlz-8H-8LC" secondAttribute="trailing" constant="8" id="J0T-1p-DRV"/>
                                 <constraint firstItem="jlz-8H-8LC" firstAttribute="top" secondItem="unx-u6-cfO" secondAttribute="top" constant="23" id="Nrp-aK-ovf"/>
                                 <constraint firstItem="cDW-TL-2ib" firstAttribute="centerX" secondItem="unx-u6-cfO" secondAttribute="centerX" id="VIc-h7-B74"/>
+                                <constraint firstItem="G0q-EV-iQh" firstAttribute="top" secondItem="unx-u6-cfO" secondAttribute="top" id="shT-bN-giN"/>
+                                <constraint firstItem="skM-Dq-x51" firstAttribute="centerX" secondItem="G0q-EV-iQh" secondAttribute="centerX" id="xOx-m4-NGD"/>
                             </constraints>
                         </view>
                     </subviews>

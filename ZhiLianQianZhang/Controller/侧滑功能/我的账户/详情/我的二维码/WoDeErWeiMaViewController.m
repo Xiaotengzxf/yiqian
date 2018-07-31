@@ -112,4 +112,8 @@
     self.Self_Image_ErWeiMa.image = finalyImage;
 }
 
+- (IBAction)back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end

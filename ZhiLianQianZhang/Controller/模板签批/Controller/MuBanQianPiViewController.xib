@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,41 +34,37 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHa-Y4-dll">
-                                    <rect key="frame" x="0.0" y="0.0" width="76" height="64"/>
+                                    <rect key="frame" x="10" y="20" width="44" height="44"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="76" id="Lms-iq-RHa"/>
-                                        <constraint firstAttribute="height" constant="64" id="psK-8V-Da7"/>
+                                        <constraint firstAttribute="height" constant="44" id="Olq-iZ-Anb"/>
+                                        <constraint firstAttribute="width" constant="44" id="YTR-zX-AX0"/>
                                     </constraints>
                                     <connections>
                                         <action selector="self_button_pop_Click:" destination="-1" eventType="touchUpInside" id="uwG-A2-Fw6"/>
                                     </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="返回箭头.png" translatesAutoresizingMaskIntoConstraints="NO" id="NiC-nl-dtt">
-                                    <rect key="frame" x="20" y="24" width="34" height="29"/>
+                                    <rect key="frame" x="15" y="27.5" width="34" height="29"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="29" id="SAS-IC-cEU"/>
                                         <constraint firstAttribute="width" constant="34" id="T5I-an-pjp"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择模板" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4h5-Ex-zlb">
-                                    <rect key="frame" x="135" y="29" width="105" height="21"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="CuE-Wp-Whg"/>
-                                        <constraint firstAttribute="width" constant="105" id="Ma8-kn-qvC"/>
-                                    </constraints>
+                                    <rect key="frame" x="153" y="31.5" width="69.5" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="NiC-nl-dtt" firstAttribute="top" secondItem="H2w-ai-rlL" secondAttribute="top" constant="24" id="GEg-CE-yIc"/>
-                                <constraint firstItem="OHa-Y4-dll" firstAttribute="top" secondItem="H2w-ai-rlL" secondAttribute="top" id="IBg-aC-Sq9"/>
+                                <constraint firstItem="4h5-Ex-zlb" firstAttribute="centerY" secondItem="OHa-Y4-dll" secondAttribute="centerY" id="Dzu-FD-rFo"/>
+                                <constraint firstItem="OHa-Y4-dll" firstAttribute="leading" secondItem="H2w-ai-rlL" secondAttribute="leading" constant="10" id="HUY-dH-g5e"/>
                                 <constraint firstAttribute="height" constant="64" id="Ppg-Tp-K9z"/>
-                                <constraint firstItem="4h5-Ex-zlb" firstAttribute="top" secondItem="H2w-ai-rlL" secondAttribute="top" constant="29" id="ViO-JR-31A"/>
-                                <constraint firstItem="NiC-nl-dtt" firstAttribute="leading" secondItem="H2w-ai-rlL" secondAttribute="leading" constant="20" id="YhO-5U-sqb"/>
+                                <constraint firstAttribute="bottom" secondItem="OHa-Y4-dll" secondAttribute="bottom" id="VQK-pS-2Zs"/>
+                                <constraint firstItem="NiC-nl-dtt" firstAttribute="centerY" secondItem="OHa-Y4-dll" secondAttribute="centerY" id="YLL-pS-j5J"/>
                                 <constraint firstItem="4h5-Ex-zlb" firstAttribute="centerX" secondItem="H2w-ai-rlL" secondAttribute="centerX" id="hek-YO-eew"/>
-                                <constraint firstItem="OHa-Y4-dll" firstAttribute="leading" secondItem="H2w-ai-rlL" secondAttribute="leading" id="p8I-Ay-GoI"/>
+                                <constraint firstItem="NiC-nl-dtt" firstAttribute="centerX" secondItem="OHa-Y4-dll" secondAttribute="centerX" id="lt7-b5-SSh"/>
                             </constraints>
                         </view>
                     </subviews>

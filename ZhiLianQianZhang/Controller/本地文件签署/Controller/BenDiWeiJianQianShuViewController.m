@@ -22,7 +22,7 @@
 #import <QuickLook/QuickLook.h>
 #import "BendiWenJianSouSuoViewController.h"
 #import "DaKaiBenDiWenJianViewController.h"
-@interface BenDiWeiJianQianShuViewController () <UIDocumentInteractionControllerDelegate> {
+@interface BenDiWeiJianQianShuViewController () <UIDocumentInteractionControllerDelegate, ELCImagePickerControllerDelegate> {
     
     View_PanXu_View *_View_PanXu;
     
@@ -421,7 +421,7 @@
     
 //    NSURL *fileurl = [[NSBundle mainBundle] URLForResource:@"改版.xlsx" withExtension:nil];
 
-    NSURL *fileurl = [NSURL URLWithString:@"http://192.168.0.113:8080/Challane/userfiles/images/20180119111800_435.pdf"];
+    NSURL *fileurl = [NSURL URLWithString:[NSString stringWithFormat:@"%@Challane/userfiles/images/20180119111800_435.pdf", URL]];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:fileurl];
     
