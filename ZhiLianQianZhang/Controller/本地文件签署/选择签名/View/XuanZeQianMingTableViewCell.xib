@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,7 +26,7 @@
                                 <rect key="frame" x="8" y="5" width="300" height="193"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oit-JY-avg">
-                                <rect key="frame" x="22" y="18" width="277" height="168"/>
+                                <rect key="frame" x="30" y="30" width="260" height="146"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="删除签名.png" translatesAutoresizingMaskIntoConstraints="NO" id="1ws-Mh-oy7">
                                 <rect key="frame" x="287" y="7" width="25" height="25"/>
@@ -36,31 +36,27 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0E1-ii-p5J">
-                                <rect key="frame" x="279" y="4" width="33" height="28"/>
+                                <rect key="frame" x="272" y="4" width="44" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="PgB-Wr-ROj"/>
-                                    <constraint firstAttribute="width" constant="33" id="uaT-zP-ni8"/>
+                                    <constraint firstAttribute="height" constant="44" id="PgB-Wr-ROj"/>
+                                    <constraint firstAttribute="width" constant="44" id="uaT-zP-ni8"/>
                                 </constraints>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eQ9-MG-DHL">
-                                <rect key="frame" x="100000" y="117" width="137" height="81"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="1ws-Mh-oy7" firstAttribute="top" secondItem="NA2-lm-hbe" secondAttribute="top" constant="7" id="4Tf-Op-pwm"/>
                             <constraint firstAttribute="bottom" secondItem="hPa-kK-Vz8" secondAttribute="bottom" constant="8" id="8Ww-0n-ags"/>
-                            <constraint firstAttribute="bottom" secondItem="oit-JY-avg" secondAttribute="bottom" constant="20" id="9zi-Wh-nzH"/>
-                            <constraint firstItem="oit-JY-avg" firstAttribute="top" secondItem="NA2-lm-hbe" secondAttribute="top" constant="18" id="KWe-9z-7yZ"/>
+                            <constraint firstAttribute="bottom" secondItem="oit-JY-avg" secondAttribute="bottom" constant="30" id="9zi-Wh-nzH"/>
+                            <constraint firstItem="oit-JY-avg" firstAttribute="top" secondItem="NA2-lm-hbe" secondAttribute="top" constant="30" id="KWe-9z-7yZ"/>
                             <constraint firstItem="hPa-kK-Vz8" firstAttribute="leading" secondItem="NA2-lm-hbe" secondAttribute="leading" constant="8" id="Lol-Dr-r7K"/>
-                            <constraint firstItem="oit-JY-avg" firstAttribute="leading" secondItem="NA2-lm-hbe" secondAttribute="leading" constant="22" id="YNg-oi-ga4"/>
+                            <constraint firstItem="oit-JY-avg" firstAttribute="leading" secondItem="NA2-lm-hbe" secondAttribute="leading" constant="30" id="YNg-oi-ga4"/>
                             <constraint firstItem="hPa-kK-Vz8" firstAttribute="top" secondItem="NA2-lm-hbe" secondAttribute="top" constant="5" id="lNf-9K-loD"/>
                             <constraint firstAttribute="trailing" secondItem="hPa-kK-Vz8" secondAttribute="trailing" constant="12" id="lQH-f6-Aho"/>
                             <constraint firstAttribute="trailing" secondItem="1ws-Mh-oy7" secondAttribute="trailing" constant="8" id="oOW-Dv-Uz2"/>
                             <constraint firstItem="0E1-ii-p5J" firstAttribute="top" secondItem="NA2-lm-hbe" secondAttribute="top" constant="4" id="qBQ-Dz-uAP"/>
-                            <constraint firstAttribute="trailing" secondItem="0E1-ii-p5J" secondAttribute="trailing" constant="8" id="xJt-OT-oH8"/>
-                            <constraint firstAttribute="trailing" secondItem="oit-JY-avg" secondAttribute="trailing" constant="21" id="zRe-eJ-6xt"/>
+                            <constraint firstAttribute="trailing" secondItem="0E1-ii-p5J" secondAttribute="trailing" constant="4" id="xJt-OT-oH8"/>
+                            <constraint firstAttribute="trailing" secondItem="oit-JY-avg" secondAttribute="trailing" constant="30" id="zRe-eJ-6xt"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -74,7 +70,6 @@
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="Cell_Image_QianMing_Image" destination="oit-JY-avg" id="12h-jj-uvr"/>
-                <outlet property="Cell_image_BianLiang_Image" destination="eQ9-MG-DHL" id="caO-Rl-c5z"/>
                 <outlet property="Self_Button_Delete" destination="0E1-ii-p5J" id="3y6-aU-faP"/>
             </connections>
             <point key="canvasLocation" x="34" y="56"/>

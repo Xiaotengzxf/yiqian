@@ -96,7 +96,7 @@
     
     if (indexPath.row == _Data_Array.count) {
         
-        XuanZeQianMing1TableViewCell *Cell = [tableView dequeueReusableCellWithIdentifier:@""];
+        XuanZeQianMing1TableViewCell *Cell = [tableView dequeueReusableCellWithIdentifier:@"1"];
         
         if (!Cell) {
             
@@ -109,7 +109,7 @@
         
     } else {
         
-        XuanZeQianMingTableViewCell *Cell = [tableView dequeueReusableCellWithIdentifier:@""];
+        XuanZeQianMingTableViewCell *Cell = [tableView dequeueReusableCellWithIdentifier:@"1"];
         
         if (!Cell) {
             
@@ -120,16 +120,13 @@
         
         NSDictionary *Dic_Cell = [_Data_Array objectAtIndex:indexPath.row];
         
-        NSString *str_URL_filesrc = [NSString stringWithFormat:@"http://192.168.0.113:8080%@",[Dic_Cell objectForKey:@"filesrc"]];
+        NSString *str_URL_filesrc = [NSString stringWithFormat:@"%@%@",URL, [Dic_Cell objectForKey:@"filesrc"]];
 
         [Cell.Cell_Image_QianMing_Image setImageWithURL:[NSURL URLWithString:str_URL_filesrc]];
-        
-//        Cell.Cell_Image_QianMing_Image.image = [DrawSignView imageToTransparent:Cell.Cell_image_BianLiang_Image.image];
         
         Cell.Self_Button_Delete.tag = indexPath.row;
         
         Cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
         return Cell;
     }
 }
@@ -139,32 +136,16 @@
     if (indexPath.row == _Data_Array.count) {
         
         NSLog(@"最后");
-        
         XinJianQianMingViewController *xinjian_Controller = [[XinJianQianMingViewController alloc]init];
-        
         [self.navigationController pushViewController:xinjian_Controller animated:YES];
         
         // 添加新的签名
     } else {
         NSLog(@"%li",indexPath.row);
-        
-        NSDictionary *dic_Cell = [_Data_Array objectAtIndex:indexPath.row];
-        
-        NSString *str_URL_Image = [NSString stringWithFormat:@"http://192.168.0.113:8080%@",[dic_Cell objectForKey:@"filesrc"]];
-        
-        UIImageView *image_view_im = [[UIImageView alloc]init];
-        
-        [image_view_im setImageWithURL:[NSURL URLWithString:str_URL_Image]];
-        
-        UIImage *_image_Return_Image = [[UIImage alloc]init]; ;
-        
-        _image_Return_Image = image_view_im.image;
-
-        if ([self.delegate respondsToSelector:@selector(sendValues:)])
-        {
-            [self.delegate sendValues:_image_Return_Image];
+        XuanZeQianMingTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        if ([self.delegate respondsToSelector:@selector(sendValues:)]) {
+            [self.delegate sendValues: cell.Cell_Image_QianMing_Image.image];
         }
-        
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -179,10 +160,7 @@
 -(void) Self_Button_Delete_Click:(UIButton *)Sender {
     
     NSLog(@"%li",Sender.tag);
-    
-    NSInteger int_Tag = Sender.tag;
-    
-    
+    //NSInteger int_Tag = Sender.tag;
     NSMutableArray *array_ShanChu = [[NSMutableArray alloc]init];
     
     for (int i = 0; i < _Data_Array.count; i++) {

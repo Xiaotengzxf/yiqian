@@ -14,7 +14,6 @@
 @property (nonatomic, strong) UIImage *image_QianMing_Image;
 
 @property (weak, nonatomic) IBOutlet UIView *Self_View_QianMing_Bg;
-
 @property (weak, nonatomic) IBOutlet UIView *Self_View_BianJi_BG;
 
 

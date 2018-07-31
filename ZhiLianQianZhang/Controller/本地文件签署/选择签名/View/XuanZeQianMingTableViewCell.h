@@ -11,11 +11,7 @@
 @interface XuanZeQianMingTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIButton *Self_Button_Delete;
-
-
 @property (weak, nonatomic) IBOutlet UIImageView *Cell_Image_QianMing_Image;
-
-@property (weak, nonatomic) IBOutlet UIImageView *Cell_image_BianLiang_Image;
 
 
 @end
