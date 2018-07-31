@@ -12,7 +12,7 @@
 #pragma mark - 外网
 //#define URL @"http://api.meiweiyun.cn/"
 
-#define URL @"http://stock.meiweiyun.cn/"
+//#define URL @"http://stock.meiweiyun.cn/"
 
 // 图片地址
 //http://fileservice.meiweiyun.cn
