@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ImageEditView.h"
 
 @interface XuanZeTuPian_TuPianQianMing_ChuliViewController : UIViewController
 
@@ -16,5 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *Self_Image_FanHui_Image;
 
 @property (weak, nonatomic) IBOutlet UIImageView *Self_Image_BianJiWanCheng_Image;
+
+@property (weak, nonatomic) IBOutlet ImageEditView *imageEditView;
 
 @end

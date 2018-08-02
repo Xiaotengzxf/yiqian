@@ -10,6 +10,8 @@
 #import "AFHTTPSessionManager.h"
 #import "UIImageView+WebCache.h"
 #import "UIImageView+AFNetworking.h"
+#import "Header.h"
+
 @interface DaKaiBenDiWenJianViewController () <UIDocumentInteractionControllerDelegate> {
     
     UIDocumentInteractionController *_documentController; //文档交互控制器
@@ -103,7 +105,7 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.0.113:8080/Challane/userfiles/files/20180109/20180109100638_847.doc"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Challane/userfiles/files/20180109/20180109100638_847.doc", URL]]];
     //下载文件
     /*
      第一个参数:请求对象

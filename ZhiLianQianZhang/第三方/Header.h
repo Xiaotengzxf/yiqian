@@ -36,6 +36,8 @@
 #pragma mark - 新建签名列表
 #define URL_HuoQu_XinJianQianMing_LieBiao (URL@"/Challane/challane/challaneFile/selectFile?")
 
+#define URL_DELETE_SIGN (URL@"Challane/sign/signdel")
+
 #pragma mark - 文件上传
 #define  URL_WenJianShangChun (URL@"/Challane/challane/challaneFile/pdftojpg?")
 

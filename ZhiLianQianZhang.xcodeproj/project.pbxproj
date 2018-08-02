@@ -9,6 +9,20 @@
 /* Begin PBXBuildFile section */
 		1611155FA993F8EE497BC02B /* libPods-ZhiLianQianZhang.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A6C23A0F3F28D65AA6B0746 /* libPods-ZhiLianQianZhang.a */; };
 		1D20E44C16D82BB465589D32 /* libPods-ZhiLianQianZhangUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5821CA9FF2484B637C0F84CE /* libPods-ZhiLianQianZhangUITests.a */; };
+		9A04E4A92111DAC400E09FE7 /* UIImageView+KCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04E48D2111DAC400E09FE7 /* UIImageView+KCExtension.m */; };
+		9A04E4AA2111DAC400E09FE7 /* UIView+KCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04E48E2111DAC400E09FE7 /* UIView+KCExtension.m */; };
+		9A04E4AB2111DAC400E09FE7 /* CALayer+KCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04E48F2111DAC400E09FE7 /* CALayer+KCExtension.m */; };
+		9A04E4AC2111DAC400E09FE7 /* NSDictionary+KCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04E4902111DAC400E09FE7 /* NSDictionary+KCExtension.m */; };
+		9A04E4AD2111DAC400E09FE7 /* UIDevice+KCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04E4912111DAC400E09FE7 /* UIDevice+KCExtension.m */; };
+		9A04E4AE2111DAC400E09FE7 /* UITextField+KCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04E4922111DAC400E09FE7 /* UITextField+KCExtension.m */; };
+		9A04E4AF2111DAC400E09FE7 /* NSString+KCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04E4932111DAC400E09FE7 /* NSString+KCExtension.m */; };
+		9A04E4B02111DAC400E09FE7 /* NSArray+KCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04E4942111DAC400E09FE7 /* NSArray+KCExtension.m */; };
+		9A04E4B12111DAC400E09FE7 /* UITextView+KCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04E4972111DAC400E09FE7 /* UITextView+KCExtension.m */; };
+		9A04E4B22111DAC400E09FE7 /* UIImage+KCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04E4A12111DAC400E09FE7 /* UIImage+KCExtension.m */; };
+		9A04E4B32111DAC400E09FE7 /* UIColor+KCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04E4A32111DAC400E09FE7 /* UIColor+KCExtension.m */; };
+		9A04E4B42111DAC400E09FE7 /* NSDate+KCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04E4A42111DAC400E09FE7 /* NSDate+KCExtension.m */; };
+		9A04E4B52111DAC400E09FE7 /* KCConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04E4A72111DAC400E09FE7 /* KCConst.m */; };
+		9A04E4B82111DAD200E09FE7 /* ImageEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04E4B62111DAD100E09FE7 /* ImageEditView.m */; };
 		B133FE35343199BF2CB254D3 /* libPods-ZhiLianQianZhangTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54A5BED5144248B95BC5409E /* libPods-ZhiLianQianZhangTests.a */; };
 		E3024FCB1FDA262B0003A797 /* 搜索.png in Resources */ = {isa = PBXBuildFile; fileRef = E3024FCA1FDA262A0003A797 /* 搜索.png */; };
 		E3024FCD1FDA262E0003A797 /* pdf.png in Resources */ = {isa = PBXBuildFile; fileRef = E3024FCC1FDA262E0003A797 /* pdf.png */; };
@@ -250,6 +264,36 @@
 		3A6C23A0F3F28D65AA6B0746 /* libPods-ZhiLianQianZhang.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZhiLianQianZhang.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54A5BED5144248B95BC5409E /* libPods-ZhiLianQianZhangTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZhiLianQianZhangTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5821CA9FF2484B637C0F84CE /* libPods-ZhiLianQianZhangUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZhiLianQianZhangUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A04E48D2111DAC400E09FE7 /* UIImageView+KCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+KCExtension.m"; sourceTree = "<group>"; };
+		9A04E48E2111DAC400E09FE7 /* UIView+KCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+KCExtension.m"; sourceTree = "<group>"; };
+		9A04E48F2111DAC400E09FE7 /* CALayer+KCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+KCExtension.m"; sourceTree = "<group>"; };
+		9A04E4902111DAC400E09FE7 /* NSDictionary+KCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+KCExtension.m"; sourceTree = "<group>"; };
+		9A04E4912111DAC400E09FE7 /* UIDevice+KCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+KCExtension.m"; sourceTree = "<group>"; };
+		9A04E4922111DAC400E09FE7 /* UITextField+KCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+KCExtension.m"; sourceTree = "<group>"; };
+		9A04E4932111DAC400E09FE7 /* NSString+KCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+KCExtension.m"; sourceTree = "<group>"; };
+		9A04E4942111DAC400E09FE7 /* NSArray+KCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+KCExtension.m"; sourceTree = "<group>"; };
+		9A04E4952111DAC400E09FE7 /* NSDate+KCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+KCExtension.h"; sourceTree = "<group>"; };
+		9A04E4962111DAC400E09FE7 /* UIColor+KCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+KCExtension.h"; sourceTree = "<group>"; };
+		9A04E4972111DAC400E09FE7 /* UITextView+KCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+KCExtension.m"; sourceTree = "<group>"; };
+		9A04E4982111DAC400E09FE7 /* UIImage+KCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KCExtension.h"; sourceTree = "<group>"; };
+		9A04E4992111DAC400E09FE7 /* NSDictionary+KCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+KCExtension.h"; sourceTree = "<group>"; };
+		9A04E49A2111DAC400E09FE7 /* UIView+KCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+KCExtension.h"; sourceTree = "<group>"; };
+		9A04E49B2111DAC400E09FE7 /* CALayer+KCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+KCExtension.h"; sourceTree = "<group>"; };
+		9A04E49C2111DAC400E09FE7 /* UIImageView+KCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+KCExtension.h"; sourceTree = "<group>"; };
+		9A04E49D2111DAC400E09FE7 /* UIDevice+KCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+KCExtension.h"; sourceTree = "<group>"; };
+		9A04E49E2111DAC400E09FE7 /* UITextField+KCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+KCExtension.h"; sourceTree = "<group>"; };
+		9A04E49F2111DAC400E09FE7 /* NSArray+KCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+KCExtension.h"; sourceTree = "<group>"; };
+		9A04E4A02111DAC400E09FE7 /* NSString+KCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+KCExtension.h"; sourceTree = "<group>"; };
+		9A04E4A12111DAC400E09FE7 /* UIImage+KCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KCExtension.m"; sourceTree = "<group>"; };
+		9A04E4A22111DAC400E09FE7 /* UITextView+KCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+KCExtension.h"; sourceTree = "<group>"; };
+		9A04E4A32111DAC400E09FE7 /* UIColor+KCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+KCExtension.m"; sourceTree = "<group>"; };
+		9A04E4A42111DAC400E09FE7 /* NSDate+KCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+KCExtension.m"; sourceTree = "<group>"; };
+		9A04E4A52111DAC400E09FE7 /* KCMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KCMacro.h; path = "../../../../KCSingleGuestureScaleRotateImageDemo-master/KCScaleImageDemo/ScaleImageDemo/KCExtension/KCMacro.h"; sourceTree = "<group>"; };
+		9A04E4A62111DAC400E09FE7 /* KCConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KCConst.h; path = "../../../../KCSingleGuestureScaleRotateImageDemo-master/KCScaleImageDemo/ScaleImageDemo/KCExtension/KCConst.h"; sourceTree = "<group>"; };
+		9A04E4A72111DAC400E09FE7 /* KCConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KCConst.m; path = "../../../../KCSingleGuestureScaleRotateImageDemo-master/KCScaleImageDemo/ScaleImageDemo/KCExtension/KCConst.m"; sourceTree = "<group>"; };
+		9A04E4A82111DAC400E09FE7 /* KCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KCExtension.h; path = "../../../../KCSingleGuestureScaleRotateImageDemo-master/KCScaleImageDemo/ScaleImageDemo/KCExtension/KCExtension.h"; sourceTree = "<group>"; };
+		9A04E4B62111DAD100E09FE7 /* ImageEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageEditView.m; sourceTree = "<group>"; };
+		9A04E4B72111DAD200E09FE7 /* ImageEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageEditView.h; sourceTree = "<group>"; };
 		BF367535B01437FEF4B93EB3 /* Pods-ZhiLianQianZhangUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZhiLianQianZhangUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZhiLianQianZhangUITests/Pods-ZhiLianQianZhangUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C0D52A17A1074DF51F48A52C /* Pods-ZhiLianQianZhangTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZhiLianQianZhangTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZhiLianQianZhangTests/Pods-ZhiLianQianZhangTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DC9CFF2768E6C9D3EE328392 /* Pods-ZhiLianQianZhangTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZhiLianQianZhangTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZhiLianQianZhangTests/Pods-ZhiLianQianZhangTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -574,6 +618,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A04E48B2111DA8500E09FE7 /* SignatureView */ = {
+			isa = PBXGroup;
+			children = (
+				9A04E4B72111DAD200E09FE7 /* ImageEditView.h */,
+				9A04E4B62111DAD100E09FE7 /* ImageEditView.m */,
+				9A04E48C2111DAC400E09FE7 /* Category */,
+				9A04E4A62111DAC400E09FE7 /* KCConst.h */,
+				9A04E4A72111DAC400E09FE7 /* KCConst.m */,
+				9A04E4A82111DAC400E09FE7 /* KCExtension.h */,
+				9A04E4A52111DAC400E09FE7 /* KCMacro.h */,
+			);
+			path = SignatureView;
+			sourceTree = "<group>";
+		};
+		9A04E48C2111DAC400E09FE7 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				9A04E48D2111DAC400E09FE7 /* UIImageView+KCExtension.m */,
+				9A04E48E2111DAC400E09FE7 /* UIView+KCExtension.m */,
+				9A04E48F2111DAC400E09FE7 /* CALayer+KCExtension.m */,
+				9A04E4902111DAC400E09FE7 /* NSDictionary+KCExtension.m */,
+				9A04E4912111DAC400E09FE7 /* UIDevice+KCExtension.m */,
+				9A04E4922111DAC400E09FE7 /* UITextField+KCExtension.m */,
+				9A04E4932111DAC400E09FE7 /* NSString+KCExtension.m */,
+				9A04E4942111DAC400E09FE7 /* NSArray+KCExtension.m */,
+				9A04E4952111DAC400E09FE7 /* NSDate+KCExtension.h */,
+				9A04E4962111DAC400E09FE7 /* UIColor+KCExtension.h */,
+				9A04E4972111DAC400E09FE7 /* UITextView+KCExtension.m */,
+				9A04E4982111DAC400E09FE7 /* UIImage+KCExtension.h */,
+				9A04E4992111DAC400E09FE7 /* NSDictionary+KCExtension.h */,
+				9A04E49A2111DAC400E09FE7 /* UIView+KCExtension.h */,
+				9A04E49B2111DAC400E09FE7 /* CALayer+KCExtension.h */,
+				9A04E49C2111DAC400E09FE7 /* UIImageView+KCExtension.h */,
+				9A04E49D2111DAC400E09FE7 /* UIDevice+KCExtension.h */,
+				9A04E49E2111DAC400E09FE7 /* UITextField+KCExtension.h */,
+				9A04E49F2111DAC400E09FE7 /* NSArray+KCExtension.h */,
+				9A04E4A02111DAC400E09FE7 /* NSString+KCExtension.h */,
+				9A04E4A12111DAC400E09FE7 /* UIImage+KCExtension.m */,
+				9A04E4A22111DAC400E09FE7 /* UITextView+KCExtension.h */,
+				9A04E4A32111DAC400E09FE7 /* UIColor+KCExtension.m */,
+				9A04E4A42111DAC400E09FE7 /* NSDate+KCExtension.m */,
+			);
+			name = Category;
+			path = "../../../../KCSingleGuestureScaleRotateImageDemo-master/KCScaleImageDemo/ScaleImageDemo/KCExtension/Category";
+			sourceTree = "<group>";
+		};
 		D67D276A2C546B91B4702C47 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,6 +751,7 @@
 		E308CA4D1FCE441C000B7869 /* 第三方 */ = {
 			isa = PBXGroup;
 			children = (
+				9A04E48B2111DA8500E09FE7 /* SignatureView */,
 				E393BB7A2020702100BC7671 /* 扫一扫封装 */,
 				E3EB4ED21FE0AB5100A65E6C /* 签名方法 */,
 				E3BA70451FDF5EF000ECD6EA /* 签名区域封装 */,
@@ -1867,14 +1958,21 @@
 				E3C7293E2007095A00044378 /* CeHua_ZhuYe_View.m in Sources */,
 				E3024FE81FDA71740003A797 /* ELCAlbumPickerController.m in Sources */,
 				E3C7295120074E1500044378 /* View_PanXu_View.m in Sources */,
+				9A04E4B82111DAD200E09FE7 /* ImageEditView.m in Sources */,
+				9A04E4B32111DAC400E09FE7 /* UIColor+KCExtension.m in Sources */,
+				9A04E4B12111DAC400E09FE7 /* UITextView+KCExtension.m in Sources */,
+				9A04E4B22111DAC400E09FE7 /* UIImage+KCExtension.m in Sources */,
 				E393BB1A20201A3200BC7671 /* TianjiaLianXiRenViewController.m in Sources */,
 				E3ED8F512003149E00D0080D /* XuanZeQianMing1TableViewCell.m in Sources */,
 				E3D6602F201EF4B200BB1205 /* DaiZiJiQian_DaiTaRenQianViewController.m in Sources */,
+				9A04E4B42111DAC400E09FE7 /* NSDate+KCExtension.m in Sources */,
+				9A04E4AE2111DAC400E09FE7 /* UITextField+KCExtension.m in Sources */,
 				E3BA704C1FDF5EF000ECD6EA /* DrawSignView.m in Sources */,
 				E3BA70441FDF5ECF00ECD6EA /* PJRSignatureView.m in Sources */,
 				E3024FEB1FDA71740003A797 /* ELCAssetTablePicker.m in Sources */,
 				E3ED8F412002FD4000D0080D /* XuanZeQianMingViewController.m in Sources */,
 				E3370E42201C0F020011CC54 /* MuBanQianPiViewController.m in Sources */,
+				9A04E4AA2111DAC400E09FE7 /* UIView+KCExtension.m in Sources */,
 				E393BB1120200D7D00BC7671 /* WodeLianXiRenTableViewCell.m in Sources */,
 				E393BB7D2020702700BC7671 /* XYMScanView.m in Sources */,
 				E3024FED1FDA71740003A797 /* ELCImagePickerController.m in Sources */,
@@ -1889,23 +1987,30 @@
 				E3ED8F592003479300D0080D /* XinJianQianMingViewController.m in Sources */,
 				E393BB822020735B00BC7671 /* XiuGaiLianXiRenViewController.m in Sources */,
 				E3FA67632000A3E300ECBC2D /* XuanZeTuPian_TuPianQianMing_ChuliViewController.m in Sources */,
+				9A04E4A92111DAC400E09FE7 /* UIImageView+KCExtension.m in Sources */,
 				E386A38D1FCCFF2E00D2F610 /* main.m in Sources */,
 				E3BA704E1FDF5EF000ECD6EA /* PopSignUtil.m in Sources */,
 				E3370E55201C52D60011CC54 /* RenLianRenZhengViewController.m in Sources */,
 				E36AFF302012D5BE003D4E03 /* WodeZhangHuViewController.m in Sources */,
 				E393BB2F20205E6000BC7671 /* WoDeErWeiMaViewController.m in Sources */,
 				E3024FE91FDA71740003A797 /* ELCAsset.m in Sources */,
+				9A04E4AC2111DAC400E09FE7 /* NSDictionary+KCExtension.m in Sources */,
 				E389D7791FFCD9D400E993C9 /* BenDiWeiJianQianShuViewController.m in Sources */,
 				E3024FEA1FDA71740003A797 /* ELCAssetCell.m in Sources */,
+				9A04E4B02111DAC400E09FE7 /* NSArray+KCExtension.m in Sources */,
 				E3BA704D1FDF5EF000ECD6EA /* MyView.m in Sources */,
+				9A04E4B52111DAC400E09FE7 /* KCConst.m in Sources */,
 				E3F727EB2009B3D100B2568B /* DaKaiBenDiWenJianViewController.m in Sources */,
 				E3F037471FD1048C000FC6C8 /* DataService.m in Sources */,
 				E3EDD08C201AB99C00AE77A3 /* ZhangHu_ChongZhiViewController.m in Sources */,
 				E3BA1D871FD12EE300C0B3C0 /* NSDictionary+NullReplacement.m in Sources */,
+				9A04E4AB2111DAC400E09FE7 /* CALayer+KCExtension.m in Sources */,
 				E3EB4ED51FE0AB5100A65E6C /* BJTSignView.m in Sources */,
+				9A04E4AF2111DAC400E09FE7 /* NSString+KCExtension.m in Sources */,
 				E3C153F61FFB876200CDA4CE /* ZhuYeMianViewController.m in Sources */,
 				E386A37F1FCCFF2E00D2F610 /* AppDelegate.m in Sources */,
 				E3370E47201C11C40011CC54 /* MuBanQianPiTableViewCell.m in Sources */,
+				9A04E4AD2111DAC400E09FE7 /* UIDevice+KCExtension.m in Sources */,
 				E386A3B21FCD071A00D2F610 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

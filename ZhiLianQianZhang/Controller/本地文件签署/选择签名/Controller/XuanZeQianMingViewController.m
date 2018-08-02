@@ -159,24 +159,25 @@
 #pragma mark - Cell - 删除
 -(void) Self_Button_Delete_Click:(UIButton *)Sender {
     
-    NSLog(@"%li",Sender.tag);
-    //NSInteger int_Tag = Sender.tag;
-    NSMutableArray *array_ShanChu = [[NSMutableArray alloc]init];
+    NSDictionary *dic_S_T = [NSDictionary dictionaryWithObjectsAndKeys:str_User_Id,@"userId", _Data_Array[Sender.tag], @"name", nil];
     
-    for (int i = 0; i < _Data_Array.count; i++) {
+    [DataService requestDataWithURL:URL_DELETE_SIGN withMethod:@"POST" withParames:dic_S_T withResult:^(id result) {
         
-        NSDictionary *dic_Array = [_Data_Array objectAtIndex:i];
+        NSDictionary *dic_Re = result;
         
-        if (i == Sender.tag) {
+        NSLog(@"%@",dic_Re);
+        
+        _Data_Array = [[NSMutableArray alloc]init];
+        
+        NSString *str_Code = [NSString stringWithFormat:@"%@",[dic_Re objectForKey:@"code"]];
+        
+        if ([str_Code isEqualToString:@"200"]) {
             
-        }else {
-            
-            [array_ShanChu addObject:dic_Array];
+            [_Data_Array removeObjectAtIndex:Sender.tag];
+            [self.Self_TableView reloadData];
         }
-    }
-    _Data_Array = array_ShanChu;
+    }];
     
-    [self.Self_TableView reloadData];
 }
 
 - (IBAction)Self_Button_PoP_Click:(id)sender {

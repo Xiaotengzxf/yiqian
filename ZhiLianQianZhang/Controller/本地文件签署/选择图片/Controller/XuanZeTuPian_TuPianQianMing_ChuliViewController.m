@@ -27,8 +27,6 @@
     
     NSString *str_User_Id;
     
-    UIImageView *_image_ShangChuang_TuPian;
-    
     QianMing_YanSeBiCu_View *_QianMing_YanSe_View;
     
     UIView *_QianMing_SheZhi_View_BG;
@@ -52,9 +50,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-//    self.Self_Image_BG.image = self.image_Bg_image;
     
     Int_Pd_QianMing_DianJiCiShu = 0;
     
@@ -73,35 +68,22 @@
     [User_Defaul_Q setObject:str_int_Bifeng forKey:@"bf"];
     
     [self UI_Image_ChuLi_Click];
-    
-    [self UI_Bg_Image_SouFang_Click];
 }
 
 -(void) UI_Image_ChuLi_Click {
     
     backView = [[UIView alloc]init];
-    
-    backView.frame =  CGRectMake(0, 110, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 110);
-    
     image_view_s  = [[UIImageView alloc]init];
-    
-    image_view_s.frame = CGRectMake(0, 0,backView.bounds.size.width, backView.bounds.size.height);
-    
     image_view_s.userInteractionEnabled = YES;
-    
     image_view_s.image = self.image_Bg_image;
-    
-    _image_ShangChuang_TuPian = [[UIImageView alloc]init];
-
-    _image_ShangChuang_TuPian.frame = CGRectMake(0, 0, 277, 168);
-
-    _image_ShangChuang_TuPian.userInteractionEnabled = YES;
-    
-    [image_view_s addSubview:_image_ShangChuang_TuPian];
-    
+    [image_view_s setTranslatesAutoresizingMaskIntoConstraints:NO];
     [backView addSubview:image_view_s];
-    
-    [self.view addSubview:backView];
+    [backView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[image_view_s]|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views:@{@"image_view_s" : image_view_s}]];
+    [backView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[image_view_s]|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views:@{@"image_view_s" : image_view_s}]];
+    [backView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.imageEditView addSubview:backView];
+    [self.imageEditView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backView]|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views:@{@"backView" : backView}]];
+    [self.imageEditView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backView]|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views:@{@"backView" : backView}]];
 }
 
 -(void) URL_TuPianSHangChuan_And_JiePing_Click {
@@ -171,15 +153,8 @@
 #pragma mark - 代理传值
 -(void)sendValues:(UIImage *)Image_ChuanZhi {
     
-//    imageToTransparent
-    
-//    _image_ShangChuang_TuPian.image = Image_ChuanZhi;
-    
-  _image_ShangChuang_TuPian.image =  [self imageToTransparent:Image_ChuanZhi];
-    
     [self.signView removeFromSuperview];
-    
-    [self UI_ShouShi_FangDa_YiDong_Click];
+    [self.imageEditView addWatermarkImage:[self imageToTransparent:Image_ChuanZhi]];
 }
 #pragma mark - 发送
 - (IBAction)Self_Button_FaSong_Click:(id)sender {
@@ -203,8 +178,7 @@
 - (IBAction)Self_Button_QingChu_QianMing_Click:(id)sender {
     
     [self.signView clearSignature];
-
-    _image_ShangChuang_TuPian.image = nil;
+    
 }
 
 #pragma mark - 签名字号 - 颜色
@@ -540,67 +514,6 @@
     [User_Defaul_Q setObject:str_int_Bifeng forKey:@"bf"];
     
     [self UI_YanSe_Button_DianJi_XiuGai_Click];
-}
-
--(void) UI_Bg_Image_SouFang_Click {
-    
-    // 缩放
-    UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchView:)];
-    
-    [image_view_s addGestureRecognizer:pinchGestureRecognizer];
-    
-    //移动
-//    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
-    
-//    [image_view_s addGestureRecognizer:panGestureRecognizer];
-}
-
-- (void) handleRotate:(UIRotationGestureRecognizer*) recognizer
-{
-    recognizer.view.transform = CGAffineTransformRotate(recognizer.view.transform, recognizer.rotation);
-    
-    recognizer.rotation = 0;
-}
-
--(void) UI_ShouShi_FangDa_YiDong_Click {
-    
-    UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchView:)];
-    
-    [_image_ShangChuang_TuPian addGestureRecognizer:pinchGestureRecognizer];
-    
-    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
-    
-    [_image_ShangChuang_TuPian addGestureRecognizer:panGestureRecognizer];
-    
-    UIRotationGestureRecognizer *rotateRecognizer = [[UIRotationGestureRecognizer alloc]initWithTarget:self action:@selector(handleRotate:)];
-    
-    [_image_ShangChuang_TuPian addGestureRecognizer:rotateRecognizer];
-}
-
-- (void) pinchView:(UIPinchGestureRecognizer *)pinchGestureRecognizer
-{
-    UIView *view = pinchGestureRecognizer.view;
-    
-    if (pinchGestureRecognizer.state == UIGestureRecognizerStateBegan || pinchGestureRecognizer.state == UIGestureRecognizerStateChanged) {
-        
-        view.transform = CGAffineTransformScale(view.transform, pinchGestureRecognizer.scale, pinchGestureRecognizer.scale);
-        
-        pinchGestureRecognizer.scale = 1;
-    }
-}
-
-- (void) panView:(UIPanGestureRecognizer *)panGestureRecognizer
-{
-    UIView *view = panGestureRecognizer.view;
-    
-    if (panGestureRecognizer.state == UIGestureRecognizerStateBegan || panGestureRecognizer.state == UIGestureRecognizerStateChanged) {
-        
-        CGPoint translation = [panGestureRecognizer translationInView:view.superview];
-        
-        [view setCenter:(CGPoint){view.center.x + translation.x, view.center.y + translation.y}];
-        
-        [panGestureRecognizer setTranslation:CGPointZero inView:view.superview];
-    }
 }
 
 - (UIImage *) imageToTransparent:(UIImage*) image {

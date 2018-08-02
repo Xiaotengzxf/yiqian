@@ -22,6 +22,7 @@
 #import <QuickLook/QuickLook.h>
 #import "BendiWenJianSouSuoViewController.h"
 #import "DaKaiBenDiWenJianViewController.h"
+
 @interface BenDiWeiJianQianShuViewController () <UIDocumentInteractionControllerDelegate, ELCImagePickerControllerDelegate> {
     
     View_PanXu_View *_View_PanXu;
@@ -56,8 +57,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-   
-//    http://192.168.0.113:8080/Challane/userfiles/20180112113012_361.png
     
     NSUserDefaults *User_Defaul_Q = [NSUserDefaults standardUserDefaults];
     
@@ -412,11 +411,6 @@
 //
 //    view_BG_PD.backgroundColor = [UIColor blueColor];
     
-    
-    // 给本地文件发送一个请求
-    
-//    http://192.168.0.113:8080/Challane/userfiles/pdf/20180119113108_159.jpg
-    
     Int_PD_WenJian_ShangChuan = 0;
     
 //    NSURL *fileurl = [[NSBundle mainBundle] URLForResource:@"改版.xlsx" withExtension:nil];
@@ -563,19 +557,15 @@
 
 - (void)upload:(NSString *)name filename:(NSString *)filename mimeType:(NSString *)mimeType data:(NSData *)data parmas:(NSDictionary *)params
  {
-         // 文件上传        http://192.168.0.113:8080/Challane/challane/challaneFile/pdftojpg
-     
-     //Challane/challane/challaneFile/uploadMedias
-     
      NSURL *url;
      
      if (Int_PD_WenJian_ShangChuan == 0) {
          
-         url  = [NSURL URLWithString:@"http://192.168.0.113:8080/Challane/challane/challaneFile/uploadMedias"];
+         url  = [NSURL URLWithString:[NSString stringWithFormat:@"%@Challane/challane/challaneFile/uploadMedias", URL]];
 
      }else {
          
-         url  = [NSURL URLWithString:@"http://192.168.0.113:8080/Challane/challane/challaneFile/pdftojpg"];
+         url  = [NSURL URLWithString:[NSString stringWithFormat:@"%@Challane/challane/challaneFile/pdftojpg", URL]];
      }
      
      
@@ -637,7 +627,7 @@
             
             if (Int_PD_WenJian_ShangChuan == 1) {
              
-                NSURL *fileurl = [NSURL URLWithString:@"http://192.168.0.113:8080/Challane/userfiles/images/20180119111800_435.pdf"];
+                NSURL *fileurl = [NSURL URLWithString:[NSString stringWithFormat:@"%@Challane/userfiles/images/20180119111800_435.pdf", URL]];
                 
                 NSURLRequest *request = [NSURLRequest requestWithURL:fileurl];
                 
