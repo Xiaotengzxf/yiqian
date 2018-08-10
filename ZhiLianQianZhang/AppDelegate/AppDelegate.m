@@ -24,21 +24,14 @@ BOOL isQQNotWeixin = NO;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
     _Home_View = [[HomeViewController alloc]init];
-    
-    _NC = [[UINavigationController alloc]initWithRootViewController:_Home_View];
-    
+    _NC = [[NavigationController alloc]initWithRootViewController:_Home_View];
     self.window.rootViewController = _NC;
-    
     [WXApi registerApp:@"wxff10f21436f38794"];
-    
-
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    
     if ([url.host isEqualToString:@"qzapp"]) {
         return [TencentOAuth HandleOpenURL:url];
     }else {
@@ -55,7 +48,7 @@ BOOL isQQNotWeixin = NO;
         
         if(aresp.errCode== 0 && [aresp.state isEqualToString:@"App"]) {
             NSString *code = aresp.code;
-            NSLog(@"%@",code);
+            NSLog(@"返回code: %@",code);
             [self getWeiXinOpenId:code];
         }
     }
@@ -65,7 +58,7 @@ BOOL isQQNotWeixin = NO;
     NSLog(@"qq登录回调：%@", response);
 }
 
-- (void)getWeiXinOpenId:(NSString *)code{
+- (void)getWeiXinOpenId:(NSString *)code {
     
     NSString *url =[NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",@"wxff10f21436f38794",@"e3382ce0684f8b2fa79d929e21f9e15c",code];
     
@@ -78,14 +71,8 @@ BOOL isQQNotWeixin = NO;
         NSData *data = [zoneStr dataUsingEncoding:NSUTF8StringEncoding];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            
             if (data){
-                
                 NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                
-//                NSString *openID = dic[@"openid"];
-//                NSString *unionid = dic[@"unionid"];
-                
                 NSString *infoUrl =[NSString stringWithFormat:@"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@",dic[@"access_token"],dic[@"openid"]];
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     
@@ -100,50 +87,32 @@ BOOL isQQNotWeixin = NO;
                          
                             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                             
-                            NSLog(@"%@",dic);
+                            NSLog(@"返回数据：%@",dic);
                             
                             NSString *str_openid = [NSString stringWithFormat:@"%@",[dic objectForKey:@"openid"]];
                             
-                            NSLog(@"%@",str_openid);
+                            NSLog(@"返回的openid: %@",str_openid);
                             
                             NSDictionary *dic_S_T = [NSDictionary dictionaryWithObjectsAndKeys:str_openid,@"openId", nil];
                             
                             [DataService requestDataWithURL:URL_DengLU_ withMethod:@"POST" withParames:dic_S_T withResult:^(id result) {
 
                                 NSDictionary *dicsss = result;
-                                
-                                NSLog(@"%@",dicsss);
-                                
+                                NSLog(@"登录返回的数据：%@",dicsss);
                                 NSDictionary *dic_data = [dicsss objectForKey:@"user"];
-                                
                                 NSString *str_id = [NSString stringWithFormat:@"%@",[dic_data objectForKey:@"id"]];
-                                
                                 NSString *str_isNewRecord = [NSString stringWithFormat:@"%@",[dic_data objectForKey:@"isNewRecord"]];
-                                
                                 NSString *str_level = [NSString stringWithFormat:@"%@",[dic_data objectForKey:@"level"]];
-                                
                                 NSString *str_openid = [NSString stringWithFormat:@"%@",[dic_data objectForKey:@"openid"]];
-                                
                                 NSString *str_point = [NSString stringWithFormat:@"%@",[dic_data objectForKey:@"point"]];
-                                
                                 NSString *str_nickname = [NSString stringWithFormat:@"%@",[dic objectForKey:@"nickname"]];
-                                
-                                NSLog(@"%@",str_nickname);
-                                
+                                NSLog(@"nickname: %@",str_nickname);
                                 NSString *str_headimgurl = [NSString stringWithFormat:@"%@",[dic objectForKey:@"headimgurl"]];
-                                
-//                                NSString *string_unionid = [NSString stringWithFormat:@"%@",[dic objectForKey:@"unionid"]];
-                                
                                 NSString *string_unionid = [dicsss objectForKey:@"card"];
-                                
-                                NSLog(@"%@",string_unionid);
-                                
+                                NSLog(@"string_unionid: %@",string_unionid);
                                 NSUserDefaults *User_Defaul_Data = [NSUserDefaults standardUserDefaults];
-                                
                                 NSDictionary *dic_User_B = [NSDictionary dictionaryWithObjectsAndKeys:str_id,@"id",str_isNewRecord,@"isNewRecord",str_level,@"level",str_openid,@"openid",str_point,@"point",str_nickname,@"name",str_headimgurl,@"image",string_unionid,@"unionid", nil];
-                                
-                                NSLog(@"%@",dic_User_B);
-                                
+                                NSLog(@"dic_User_B: %@",dic_User_B);
                                 [User_Defaul_Data setObject:dic_User_B forKey:@"User"];
                             }];
                         }
@@ -202,29 +171,63 @@ BOOL isQQNotWeixin = NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
 }
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
 - (void)onReq:(QQBaseReq *)req {
     NSLog(@"QQ或微信登录请求");
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(nonnull NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(nonnull id)annotation
+{
+    NSLog(@"%@",url);
+    NSLog(@"%@",sourceApplication);
+    
+    NSString *typeStr = [self getFileTypeStr:url.path.pathExtension];
+    NSString *fileName = url.path.lastPathComponent;
+    NSString *str = [NSString stringWithFormat:@"文件类型: %@\n文件名称: %@",typeStr,fileName];
+    
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    int result = [self writeFile:data toName:fileName writeType:0];
+    
+    return YES;
+}
+
+- (int)writeFile:(NSData *)data toName:(NSString *)name writeType:(int)type
+{
+    NSArray *patchs = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [patchs objectAtIndex:0];
+    NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error: nil];
+    //拼接路径
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:name];
+    return [data writeToFile:filePath atomically:YES];
+}
+
+- (NSString *)getFileTypeStr:(NSString *)pathExtension
+{
+    if ([pathExtension isEqualToString:@"pdf"] || [pathExtension isEqualToString:@"PDF"]) {
+        return @"PDF";
+    }
+    if ([pathExtension isEqualToString:@"doc"] || [pathExtension isEqualToString:@"docx"] || [pathExtension isEqualToString:@"DOC"] || [pathExtension isEqualToString:@"DOCX"]) {
+        return @"Word";
+    }
+    if ([pathExtension isEqualToString:@"ppt"] || [pathExtension isEqualToString:@"PPT"]) {
+        return @"PowerPoint";
+    }
+    if ([pathExtension isEqualToString:@"xls"] || [pathExtension isEqualToString:@"XLS"] || [pathExtension isEqualToString:@"xlsx"] || [pathExtension isEqualToString:@"XLSX"]) {
+        return @"Excel";
+    }
+    return @"其它";
+}
 
 @end

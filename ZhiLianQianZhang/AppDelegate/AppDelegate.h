@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "HomeViewController.h"
 #import "WXApi.h"
+#import "NavigationController.h"
 
 extern BOOL isQQNotWeixin;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,WXApiDelegate> {
     
     HomeViewController *_Home_View;
-    UINavigationController *_NC;
+    NavigationController *_NC;
     
 }
 

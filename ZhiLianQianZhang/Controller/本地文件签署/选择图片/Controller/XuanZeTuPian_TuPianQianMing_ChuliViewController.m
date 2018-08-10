@@ -21,24 +21,15 @@
 #import "QianMing_YanSeBiCu_View.h"
 @interface XuanZeTuPian_TuPianQianMing_ChuliViewController () <RegisterViewControl>{
     
-    UIView *backView;
-    
+    ImageEditView *backView;
     UIImageView *image_view_s;
-    
     NSString *str_User_Id;
-    
     QianMing_YanSeBiCu_View *_QianMing_YanSe_View;
-    
     UIView *_QianMing_SheZhi_View_BG;
-    
     NSInteger Int_Pd_QianMing_DianJiCiShu;
-    
     UIColor *color_With_Return;
-    
     NSInteger Int_BiCu_Count_Next;
-    
     NSUserDefaults *User_Defaul_Q;
-    
     NSString *str_Button_PD_FanHui;
 }
 
@@ -52,27 +43,19 @@
     [super viewDidLoad];
     
     Int_Pd_QianMing_DianJiCiShu = 0;
-    
     Int_BiCu_Count_Next = 4;
-    
     str_Button_PD_FanHui = @"0";
-    
     User_Defaul_Q = [NSUserDefaults standardUserDefaults];
-    
     NSDictionary *dic_User_Defaul = [User_Defaul_Q objectForKey:@"User"];
-    
     str_User_Id = [NSString stringWithFormat:@"%@",[dic_User_Defaul objectForKey:@"id"]];
-    
     NSString *str_int_Bifeng = [NSString stringWithFormat:@"%li",Int_BiCu_Count_Next];
-    
     [User_Defaul_Q setObject:str_int_Bifeng forKey:@"bf"];
-    
     [self UI_Image_ChuLi_Click];
 }
 
 -(void) UI_Image_ChuLi_Click {
     
-    backView = [[UIView alloc]init];
+    backView = [[ImageEditView alloc] init];
     image_view_s  = [[UIImageView alloc]init];
     image_view_s.userInteractionEnabled = YES;
     image_view_s.image = self.image_Bg_image;
@@ -81,9 +64,9 @@
     [backView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[image_view_s]|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views:@{@"image_view_s" : image_view_s}]];
     [backView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[image_view_s]|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views:@{@"image_view_s" : image_view_s}]];
     [backView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.imageEditView addSubview:backView];
-    [self.imageEditView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backView]|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views:@{@"backView" : backView}]];
-    [self.imageEditView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backView]|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views:@{@"backView" : backView}]];
+    [self.view addSubview:backView];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backView]|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views:@{@"backView" : backView}]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(110)-[backView]|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views:@{@"backView" : backView}]];
 }
 
 -(void) URL_TuPianSHangChuan_And_JiePing_Click {
@@ -152,9 +135,8 @@
 }
 #pragma mark - 代理传值
 -(void)sendValues:(UIImage *)Image_ChuanZhi {
-    
     [self.signView removeFromSuperview];
-    [self.imageEditView addWatermarkImage:[self imageToTransparent:Image_ChuanZhi]];
+    [backView addWatermarkImage: [self imageToTransparent:Image_ChuanZhi]];
 }
 #pragma mark - 发送
 - (IBAction)Self_Button_FaSong_Click:(id)sender {
@@ -360,6 +342,7 @@
     [self.signView removeFromSuperview];
     
     color_With_Return = [UIColor colorWithRed:153/255.0f green:153/255.0f blue:153/255.0f alpha:1];
+     [self UI_YanSe_Button_DianJi_XiuGai_Click];
 }
 
 -(void) View_Button_YanSe_3_Click {

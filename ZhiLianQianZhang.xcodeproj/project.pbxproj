@@ -23,6 +23,7 @@
 		9A04E4B42111DAC400E09FE7 /* NSDate+KCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04E4A42111DAC400E09FE7 /* NSDate+KCExtension.m */; };
 		9A04E4B52111DAC400E09FE7 /* KCConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04E4A72111DAC400E09FE7 /* KCConst.m */; };
 		9A04E4B82111DAD200E09FE7 /* ImageEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A04E4B62111DAD100E09FE7 /* ImageEditView.m */; };
+		9AE829E62114260300B236DD /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE829E52114260300B236DD /* NavigationController.m */; };
 		B133FE35343199BF2CB254D3 /* libPods-ZhiLianQianZhangTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54A5BED5144248B95BC5409E /* libPods-ZhiLianQianZhangTests.a */; };
 		E3024FCB1FDA262B0003A797 /* 搜索.png in Resources */ = {isa = PBXBuildFile; fileRef = E3024FCA1FDA262A0003A797 /* 搜索.png */; };
 		E3024FCD1FDA262E0003A797 /* pdf.png in Resources */ = {isa = PBXBuildFile; fileRef = E3024FCC1FDA262E0003A797 /* pdf.png */; };
@@ -294,6 +295,8 @@
 		9A04E4A82111DAC400E09FE7 /* KCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KCExtension.h; path = "../../../../KCSingleGuestureScaleRotateImageDemo-master/KCScaleImageDemo/ScaleImageDemo/KCExtension/KCExtension.h"; sourceTree = "<group>"; };
 		9A04E4B62111DAD100E09FE7 /* ImageEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageEditView.m; sourceTree = "<group>"; };
 		9A04E4B72111DAD200E09FE7 /* ImageEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageEditView.h; sourceTree = "<group>"; };
+		9AE829E42114260300B236DD /* NavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
+		9AE829E52114260300B236DD /* NavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		BF367535B01437FEF4B93EB3 /* Pods-ZhiLianQianZhangUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZhiLianQianZhangUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZhiLianQianZhangUITests/Pods-ZhiLianQianZhangUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C0D52A17A1074DF51F48A52C /* Pods-ZhiLianQianZhangTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZhiLianQianZhangTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZhiLianQianZhangTests/Pods-ZhiLianQianZhangTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DC9CFF2768E6C9D3EE328392 /* Pods-ZhiLianQianZhangTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZhiLianQianZhangTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZhiLianQianZhangTests/Pods-ZhiLianQianZhangTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -744,6 +747,8 @@
 				E386A3AF1FCD071A00D2F610 /* HomeViewController.h */,
 				E386A3B01FCD071A00D2F610 /* HomeViewController.m */,
 				E386A3B11FCD071A00D2F610 /* HomeViewController.xib */,
+				9AE829E42114260300B236DD /* NavigationController.h */,
+				9AE829E52114260300B236DD /* NavigationController.m */,
 			);
 			path = HomeController;
 			sourceTree = "<group>";
@@ -1978,6 +1983,7 @@
 				E3024FED1FDA71740003A797 /* ELCImagePickerController.m in Sources */,
 				E3024FEC1FDA71740003A797 /* ELCConsole.m in Sources */,
 				E3FA675520005E9A00ECBC2D /* BenDiWenJianXuanZeTableViewCell.m in Sources */,
+				9AE829E62114260300B236DD /* NavigationController.m in Sources */,
 				E3024FEE1FDA71740003A797 /* ELCOverlayImageView.m in Sources */,
 				E3BA1D861FD12EE300C0B3C0 /* NetApiManager.m in Sources */,
 				E3D6603A201EFBB200BB1205 /* DaiTaRenQian_aViewController.m in Sources */,

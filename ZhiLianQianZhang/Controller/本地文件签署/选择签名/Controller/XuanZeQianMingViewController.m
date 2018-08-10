@@ -29,39 +29,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
     NSUserDefaults *User_Defaul_Q = [NSUserDefaults standardUserDefaults];
-    
     NSDictionary *dic_User_Defaul = [User_Defaul_Q objectForKey:@"User"];
-    
     str_User_Id = [NSString stringWithFormat:@"%@",[dic_User_Defaul objectForKey:@"id"]];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    
+    [super viewWillAppear:animated];
     [self UI_TableView_Click];
-    
     [self URL_Tableview_Click];
 }
 
--(void) URL_Tableview_Click {
-    
-    NSDictionary *dic_S_T = [NSDictionary dictionaryWithObjectsAndKeys:str_User_Id,@"id", nil];
-    
-    [DataService requestDataWithURL:URL_HuoQu_XinJianQianMing_LieBiao withMethod:@"POST" withParames:dic_S_T withResult:^(id result) {
-        
-        NSDictionary *dic_Re = result;
-        
-        NSLog(@"%@",dic_Re);
-        
-        _Data_Array = [[NSMutableArray alloc]init];
+//支持旋转
+-(BOOL)shouldAutorotate{
+    return YES;
+}
 
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+-(void) URL_Tableview_Click {
+    NSDictionary *dic_S_T = [NSDictionary dictionaryWithObjectsAndKeys:str_User_Id,@"userId", nil];
+    [DataService requestDataWithURL:URL_SIGN_LIST withMethod:@"POST" withParames:dic_S_T withResult:^(id result) {
+        NSDictionary *dic_Re = result;
+        NSLog(@"%@",dic_Re);
+        _Data_Array = [[NSMutableArray alloc] init];
         NSString *str_Code = [NSString stringWithFormat:@"%@",[dic_Re objectForKey:@"code"]];
-        
         if ([str_Code isEqualToString:@"200"]) {
-            
-            _Data_Array = [dic_Re objectForKey:@"data"];
-       
+            _Data_Array = [dic_Re objectForKey:@"signList"];
             [self.Self_TableView reloadData];
         }
     }];
@@ -108,24 +104,15 @@
         return Cell;
         
     } else {
-        
         XuanZeQianMingTableViewCell *Cell = [tableView dequeueReusableCellWithIdentifier:@"1"];
-        
         if (!Cell) {
-            
             Cell = [[[NSBundle mainBundle]loadNibNamed:@"XuanZeQianMingTableViewCell" owner:self options:nil]lastObject];
         }
-        
         [Cell.Self_Button_Delete addTarget:self action:@selector(Self_Button_Delete_Click:) forControlEvents:UIControlEventTouchUpInside];
-        
         NSDictionary *Dic_Cell = [_Data_Array objectAtIndex:indexPath.row];
-        
-        NSString *str_URL_filesrc = [NSString stringWithFormat:@"%@%@",URL, [Dic_Cell objectForKey:@"filesrc"]];
-
+        NSString *str_URL_filesrc = [NSString stringWithFormat:@"%@%@",URL, [Dic_Cell objectForKey:@"image"]];
         [Cell.Cell_Image_QianMing_Image setImageWithURL:[NSURL URLWithString:str_URL_filesrc]];
-        
         Cell.Self_Button_Delete.tag = indexPath.row;
-        
         Cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return Cell;
     }
@@ -137,7 +124,9 @@
         
         NSLog(@"最后");
         XinJianQianMingViewController *xinjian_Controller = [[XinJianQianMingViewController alloc]init];
-        [self.navigationController pushViewController:xinjian_Controller animated:YES];
+        [self presentViewController:xinjian_Controller animated:true completion:^{
+            
+        }];
         
         // 添加新的签名
     } else {
@@ -158,22 +147,25 @@
 
 #pragma mark - Cell - 删除
 -(void) Self_Button_Delete_Click:(UIButton *)Sender {
-    
-    NSDictionary *dic_S_T = [NSDictionary dictionaryWithObjectsAndKeys:str_User_Id,@"userId", _Data_Array[Sender.tag], @"name", nil];
+    NSString * fileName = [_Data_Array[Sender.tag] objectForKey:@"image"];
+    NSString * pId = [_Data_Array[Sender.tag] objectForKey:@"id"];
+    NSDictionary *dic_S_T = [NSDictionary dictionaryWithObjectsAndKeys:str_User_Id,@"userId", [NSString stringWithFormat:@"%@.pdf", [fileName lastPathComponent]], @"name", pId, @"id", nil];
     
     [DataService requestDataWithURL:URL_DELETE_SIGN withMethod:@"POST" withParames:dic_S_T withResult:^(id result) {
-        
         NSDictionary *dic_Re = result;
-        
         NSLog(@"%@",dic_Re);
-        
-        _Data_Array = [[NSMutableArray alloc]init];
-        
         NSString *str_Code = [NSString stringWithFormat:@"%@",[dic_Re objectForKey:@"code"]];
         
         if ([str_Code isEqualToString:@"200"]) {
-            
-            [_Data_Array removeObjectAtIndex:Sender.tag];
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            for (int i = 0; i < _Data_Array.count; i++) {
+                if (i == Sender.tag) {
+                    
+                } else {
+                    [array addObject:_Data_Array[i]];
+                }
+            }
+            _Data_Array = array;
             [self.Self_TableView reloadData];
         }
     }];

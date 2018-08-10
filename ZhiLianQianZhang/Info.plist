@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIFileSharingEnabled</key>
-	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -89,6 +87,8 @@
 	<string>需要您的同意,才能访问麦克风</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>需要您的同意,才能访问相册</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -110,5 +110,83 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>CFBundleDocumentTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeName</key>
+            <string>OFFICE Document</string>
+            <key>LSHandlerRank</key>
+            <string>Owner</string>
+            <key>LSItemContentTypes</key>
+            <array>
+                <string>com.microsoft.word.doc</string>  
+                <string>com.microsoft.powerpoint.ppt</string>
+                <string>com.microsoft.excel.xls</string>
+                <string>com.adobe.pdf</string>
+            </array>
+        </dict>
+    </array>
+    <key>UTExportedTypeDeclarations</key>
+    <array>
+        <dict>
+            <key>UTTypeConformsTo</key>
+            <array>
+                <string>public.data</string>
+                <string>public.composite-content</string>
+            </array>
+            <key>UTTypeIdentifier</key>
+            <string>com.adobe.pdf</string>
+            <key>UTTypeDescription</key>
+            <string>PDF文档</string>
+            <key>UTTypeTagSpecification</key>
+            <dict>
+                <key>public.mime-type</key>
+                <string>application/pdf</string>
+                <key>public.filename-extension</key>
+                <array>
+                    <string>pdf</string>
+                </array>
+            </dict>
+        </dict>
+        <dict>
+            <key>UTTypeConformsTo</key>
+            <array>
+                <string>public.data</string>
+            </array>
+            <key>UTTypeIdentifier</key>
+            <string>com.microsoft.word.doc</string>
+            <key>UTTypeDescription</key>
+            <string>Word文档</string>
+            <key>UTTypeTagSpecification</key>
+            <dict>
+                <key>public.mime-type</key>
+                <string>application/msword</string>
+                <key>public.filename-extension</key>
+                <array>
+                    <string>doc</string>
+                    <string>docx</string>
+                </array>
+            </dict>
+        </dict>
+        <dict>
+            <key>UTTypeConformsTo</key>
+            <array>
+                <string>public.data</string>
+            </array>
+            <key>UTTypeIdentifier</key>
+            <string>com.microsoft.excel.xls</string>
+            <key>UTTypeDescription</key>
+            <string>Excel Document</string>
+            <key>UTTypeTagSpecification</key>
+            <dict>
+                <key>public.mime-type</key>
+                <string>application/vnd.ms-excel</string>
+                <key>public.filename-extension</key>
+                <array>
+                    <string>xls</string>
+                </array>
+            </dict>
+        </dict>
+    </array>
 </dict>
 </plist>

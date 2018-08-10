@@ -50,8 +50,7 @@
     if (!_deleteBtn) {
         UIButton *deleteBtn = [[UIButton alloc] init];
         [deleteBtn addTarget:self action:@selector(delete) forControlEvents:UIControlEventTouchUpInside];
-        [deleteBtn setImage:[UIImage imageNamed:@"icon_delete"] forState:UIControlStateNormal];
-        deleteBtn.backgroundColor = [UIColor greenColor];
+        [deleteBtn setImage:[UIImage imageNamed:@"删除签名"] forState:UIControlStateNormal];
         [self addSubview:deleteBtn];
         _deleteBtn = deleteBtn;
     }
@@ -63,20 +62,25 @@
     [self.currentEditintImageView removeFromSuperview];
     [self.imageViews removeObject:self.currentEditintImageView];
     self.currentEditintImageView = nil;
-    [self hideEditingBtn:YES];
+    self.deleteBtn.frame = CGRectMake(-40 , 0, 40, 40);
+    self.editBtn.frame = CGRectMake(-40, 0, 40, 40);
 }
 
 - (UIImageView *)editBtn
 {
     if (!_editBtn) {
-        UIImageView *editBtn = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"btn_watermark_scale"]];
+        UIImageView *editBtn = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x2"]];
         editBtn.contentMode = UIViewContentModeCenter;
         editBtn.userInteractionEnabled = NO;
-        editBtn.backgroundColor = [UIColor blackColor];
         [self addSubview:editBtn];
         _editBtn = editBtn;
     }
     return _editBtn;
+}
+
+- (void) setButtonCenter {
+    self.deleteBtn.center = self.currentEditintImageView.kc_topRightAfterTransform;
+    self.editBtn.center = self.currentEditintImageView.kc_bottomRightAfterTransform;
 }
 
 - (NSMutableArray *)imageViews
@@ -136,7 +140,7 @@
     }
     
     if (rotate.state == UIGestureRecognizerStateBegan) {
-        
+       
       
     }else if (rotate.state == UIGestureRecognizerStateEnded) {
         
@@ -149,6 +153,7 @@
         [rotate setRotation:0];
         
     }
+    [self setButtonCenter];
 }
 
 
@@ -160,15 +165,12 @@
         
         UIImageView *imgView = [self imageViewInLocation:[pinch locationInView:self]];
         if (!self.currentEditintImageView && !imgView) return;
-        
         if (imgView) {
             self.currentEditintImageView = imgView;
         }
         
-        
     }else if (pinch.state == UIGestureRecognizerStateEnded) {
         if (!self.currentEditintImageView) return;
-       
     }else {
         
         self.currentEditintImageView.transform = CGAffineTransformScale(self.currentEditintImageView.transform, pinch.scale, pinch.scale);
@@ -176,9 +178,7 @@
         [pinch setScale:1];
         
     }
-    
-//    [self resetBorder];
-    
+    [self setButtonCenter];
 }
 
 - (void)tap:(UITapGestureRecognizer *)tap
@@ -193,7 +193,6 @@
 
 - (void)pan:(UIPanGestureRecognizer *)pan
 {
-    
     if (pan.state == UIGestureRecognizerStateBegan) {
         
         UIImageView *imgView = [self imageViewInLocation:[pan locationInView:self]];
@@ -213,7 +212,6 @@
         if (!self.currentEditintImageView) return;
         
         self.previousPoint = [pan locationInView:self];
-        
     }else {
         
         if (self.isEditGusture) {
@@ -250,6 +248,7 @@
         self.previousPoint = [pan locationInView:self];
         
     }
+    [self setButtonCenter];
 }
 
 
@@ -274,22 +273,6 @@
 }
 
 
-- (void)hideEditingBtn:(BOOL)hidden
-{
-    self.deleteBtn.hidden = hidden;
-    self.editBtn.hidden = hidden;
-    
-    if (!hidden) {
-        
-        self.deleteBtn.center = self.currentEditintImageView.kc_topLeftAfterTransform;
-        
-        self.editBtn.center = self.currentEditintImageView.kc_bottomRightAfterTransform;
-        
-    }
-    
-}
-
-
 - (CGFloat)distanceWithPoint:(CGPoint)point otherPoint:(CGPoint)otherPoint
 {
     return sqrt(pow(point.x - otherPoint.x, 2) + pow(point.y - otherPoint.y, 2));
@@ -301,14 +284,12 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    CGFloat btnWH = 40;
-    self.deleteBtn.bounds = CGRectMake(0, 0, btnWH, btnWH);
-    self.editBtn.bounds = CGRectMake(0, 0, btnWH, btnWH);
     
     if (self.imageView.image.size.width < self.kc_width && self.imageView.image.size.height < self.kc_height) {
         
         self.imageView.kc_size = self.imageView.image.size;
         self.imageView.center = CGPointMake(self.kc_width * 0.5, self.kc_height * 0.5);
+        
     }else {
         
             CGFloat w = 0;
@@ -338,13 +319,20 @@
 - (void)addWatermarkImage:(UIImage *)watermarkImage
 {
     UIImageView *imageView = [[UIImageView alloc] initWithImage: watermarkImage];
-    imageView.frame = CGRectMake(20, 100, [[UIScreen mainScreen] bounds].size.width - 40, 100);
-    
+    imageView.layer.borderColor = [UIColor darkGrayColor].CGColor;
+    imageView.layer.borderWidth = 0.5;
+    CGFloat width = [[UIScreen mainScreen] bounds].size.width - 40;
+    CGFloat height = watermarkImage.size.height * width / watermarkImage.size.width;
+    CGFloat y = [[UIScreen mainScreen] bounds].size.height / 2 - height / 2;
+    imageView.frame = CGRectMake(20, y, width, height);
     [self addSubview:imageView];
     
     [self.imageViews addObject:imageView];
-    [self hideEditingBtn: NO];
     
+    self.deleteBtn.frame = CGRectMake(-40 , 0, 40, 40);
+    self.editBtn.frame = CGRectMake(-40, 0, 40, 40);
+    self.deleteBtn.center = imageView.kc_topRightAfterTransform;
+    self.editBtn.center = imageView.kc_bottomRightAfterTransform;
 }
 
 

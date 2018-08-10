@@ -38,6 +38,10 @@
 
 #define URL_DELETE_SIGN (URL@"Challane/sign/signdel")
 
+#define URL_ADD_SIGN (URL@"Challane/sign/signAdd")
+
+#define URL_SIGN_LIST (URL@"Challane/sign/signlist")
+
 #pragma mark - 文件上传
 #define  URL_WenJianShangChun (URL@"/Challane/challane/challaneFile/pdftojpg?")
 

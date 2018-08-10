@@ -13,11 +13,7 @@
 
 
 @property (nonatomic, strong)  UIImage *image_Bg_image;
-
 @property (weak, nonatomic) IBOutlet UIImageView *Self_Image_FanHui_Image;
-
 @property (weak, nonatomic) IBOutlet UIImageView *Self_Image_BianJiWanCheng_Image;
-
-@property (weak, nonatomic) IBOutlet ImageEditView *imageEditView;
 
 @end

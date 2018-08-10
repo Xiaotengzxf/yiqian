@@ -26,20 +26,14 @@
 @interface BenDiWeiJianQianShuViewController () <UIDocumentInteractionControllerDelegate, ELCImagePickerControllerDelegate> {
     
     View_PanXu_View *_View_PanXu;
-    
     NSInteger Int_PanXu_Count;
-    
     NSString *str_Url_S;
-    
     NSURL *fileURL;
-    
     NSString *str_User_Id;
-    
     NSDictionary *dic_User_Defaul;
-    
     UIDocumentInteractionController *_documentController; //文档交互控制器
-    
     NSInteger Int_PD_WenJian_ShangChuan;
+    NSMutableArray * arrTableData;
 }
 
 #define YYEncode(str) [str dataUsingEncoding:NSUTF8StringEncoding]
@@ -57,6 +51,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    arrTableData = [[NSMutableArray alloc] init];
     
     NSUserDefaults *User_Defaul_Q = [NSUserDefaults standardUserDefaults];
     
@@ -86,7 +81,7 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 1;
+    return arrTableData.count;
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -101,6 +96,11 @@
     if (!Cell) {
         
         Cell = [[[NSBundle mainBundle]loadNibNamed:@"BenDiWenJianXuanZeTableViewCell" owner:self options:nil]lastObject];
+        
+        NSDictionary * dict = [arrTableData objectAtIndex: indexPath.row];
+        Cell.nameLabel.text = [dict objectForKey: @"name"];
+        Cell.sizeLabel.text = [dict objectForKey: @"size"];
+        Cell.dateLabel.text = [dict objectForKey: @"date"];
     }
     
     Cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -110,59 +110,52 @@
 
 #pragma mark -  遍历沙盒路径
 -(void) URL_ShaHe_BianLi_Click {
-    
-//    NSString *docDirectionary = [NSString stringWithFormat:@"%@/Documents",NSHomeDirectory()];
-//
-//    NSString *path=@"System/Library/";
-    
-//    NSFileManager *fileM = [NSFileManager defaultManager];
-    
-//    NSArray *subPaths = [fileM contentsOfDirectoryAtPath:docDirectionary error:nil];
-//
-//    NSLog(@"%@",subPaths);
-//
-//    if (subPaths) {
-//
-//        for (NSString *subPath in subPaths) {
-//
-//            NSLog(@"%@",subPath);
-//        }
-//    }
-    
-//    NSString *docDirectionary = [NSString stringWithFormat:@"%@/Documents",NSHomeDirectory()];
-    
-//    NSString *path=@"System/Library/";
-    
-    NSString *path1 = @"Library/Caches/";
-    
-//    NSString *path2 = @"Desktop/";
-    
-//    NSString *tempPath = NSTemporaryDirectory();
-//
-//    NSString *fullName=NSFullUserName();
-//
-//    NSString *userName=NSUserName();
-//
-//    NSString * NSHomeDirectoryForUser ( NSString *userName );
-    
-//    NSArray *patchs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    
-//    NSArray *patchs = NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES);
-    
+
     NSArray *patchs = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    
-    NSLog(@"%@",patchs);
-    
-    // 获取Documents路径
-    // [patchs objectAtIndex:0]
     NSString *documentsDirectory = [patchs objectAtIndex:0];
-    
-    NSString *fileDirectory = [documentsDirectory stringByAppendingPathComponent: path1];
-    
-//    fileM
-    NSArray *files = [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:fileDirectory error:nil];
-    
-    NSLog(@"%@",files);
+    NSArray *files = [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:[documentsDirectory stringByAppendingPathComponent:@"Inbox"] error:nil];
+    for (int i = 0; i < files.count; i++) {
+        NSString * filePath = [files objectAtIndex:i];
+        NSString * fileName = filePath.lastPathComponent;
+        if ([self getFileTypeStr:fileName.pathExtension].length > 0) {
+            NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
+            NSDictionary *fileDict = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];
+            NSDate * date = fileDict.fileCreationDate;
+            NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
+            NSString * strDate = [formatter stringFromDate:date];
+            [dict setObject:strDate forKey: @"date"];
+            unsigned long long fileSize = fileDict.fileSize;
+            NSString * strFileSize = nil;
+            if (fileSize > 1024 * 1024) {
+                strFileSize = [NSString stringWithFormat:@"%lluM", fileSize / 1024 / 1024];
+            } else if (fileSize > 1024) {
+                strFileSize = [NSString stringWithFormat:@"%lluKB", fileSize / 1024];
+            } else {
+                strFileSize = [NSString stringWithFormat:@"%lluB", fileSize];
+            }
+            [dict setObject:strFileSize forKey: @"size"];
+            [dict setObject:fileName forKey:@"name"];
+            [arrTableData addObject: dict];
+        }
+    }
+}
+
+- (NSString *)getFileTypeStr:(NSString *)pathExtension
+{
+    if ([pathExtension isEqualToString:@"pdf"] || [pathExtension isEqualToString:@"PDF"]) {
+        return @"PDF";
+    }
+    if ([pathExtension isEqualToString:@"doc"] || [pathExtension isEqualToString:@"docx"] || [pathExtension isEqualToString:@"DOC"] || [pathExtension isEqualToString:@"DOCX"]) {
+        return @"Word";
+    }
+    if ([pathExtension isEqualToString:@"ppt"] || [pathExtension isEqualToString:@"PPT"]) {
+        return @"PowerPoint";
+    }
+    if ([pathExtension isEqualToString:@"xls"] || [pathExtension isEqualToString:@"XLS"] || [pathExtension isEqualToString:@"xlsx"] || [pathExtension isEqualToString:@"XLSX"]) {
+        return @"Excel";
+    }
+    return @"";
 }
 
 #pragma mark - 开始选择图片

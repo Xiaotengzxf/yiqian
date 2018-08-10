@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface BenDiWenJianXuanZeTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sizeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end

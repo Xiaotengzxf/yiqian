@@ -26,8 +26,6 @@
     NSUserDefaults *User_Defaul_Q;
     UIButton *button_BianJi;
     UIButton *button_QingChu;
-    UIButton *button_BianJi1;
-    UIButton *button_QingChu1;
 }
 
 @property(nonatomic,strong) BJTSignView *signView;
@@ -49,65 +47,53 @@
     NSString *str_int_Bifeng = [NSString stringWithFormat:@"%li",Int_BiCu_Count_Next];
     [User_Defaul_Q setObject:str_int_Bifeng forKey:@"bf"];
     Int_Pd_QianMing_DianJiCiShu = 0;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarOrientationChange:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+    [self defaultSettings];
     [self UI_YanSe_Button_DianJi_XiuGai_Click];
-    
 }
 
-- (void)statusBarOrientationChange:(NSNotification *)notification {
-    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-    if (orientation == UIInterfaceOrientationPortrait) {
-        NSLog(@"xxx");
-    }
-    if (orientation == UIInterfaceOrientationLandscapeRight) { // home键靠右
-        NSLog(@"右");
-    }
-    if (orientation == UIInterfaceOrientationPortrait) {
-        NSLog(@"VVV");
-    }
-    [self UI_YanSe_Button_DianJi_XiuGai_Click];
+- (void)defaultSettings {
+    Int_BiCu_Count_Next = 2;
+    NSString *str_int_Bifeng = [NSString stringWithFormat:@"%li",Int_BiCu_Count_Next];
+    [User_Defaul_Q setObject:str_int_Bifeng forKey:@"bf"];
+    
+    color_With_Return = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:1];
 }
+
+//支持旋转
+-(BOOL)shouldAutorotate {
+    return YES;
+}
+
+//支持的方向
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscape;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    return UIInterfaceOrientationLandscapeLeft;
+}
+
 -(void)UI_YanSe_Button_DianJi_XiuGai_Click {
     button_BianJi = [UIButton buttonWithType:UIButtonTypeSystem];
     [button_BianJi setBackgroundImage:[UIImage imageNamed:@"tianjiaQianMing.png"] forState:UIControlStateNormal];
     button_QingChu = [UIButton buttonWithType:UIButtonTypeSystem];
     [button_QingChu setTitle:@"清除" forState:UIControlStateNormal];
-    if ([UIScreen mainScreen].bounds.size.width == 320) {
-        button_BianJi.frame = CGRectMake(258, 49, 40, 40);
-        button_QingChu.frame = CGRectMake(258, 112, 40, 40);
-    }
-    if ([UIScreen mainScreen].bounds.size.width == 568) {
-        button_BianJi.frame = CGRectMake(506, 49, 40, 40);
-        button_QingChu.frame = CGRectMake(506, 112, 40, 40);
-    }
-    if ([UIScreen mainScreen].bounds.size.width == 375) {
-        button_BianJi.frame = CGRectMake(313, 49, 40, 40);
-        button_QingChu.frame = CGRectMake(313, 112, 40, 40);
-    }
-    if ([UIScreen mainScreen].bounds.size.width == 667) {
-        button_BianJi.frame = CGRectMake(605, 49, 40, 40);
-        button_QingChu.frame = CGRectMake(605, 112, 40, 40);
-    }
-    if ([UIScreen mainScreen].bounds.size.width == 812) {
-        button_BianJi.frame = CGRectMake(662, 49, 40, 40);
-        button_QingChu.frame = CGRectMake(662, 112, 40, 40);
-    }
-    if ([UIScreen mainScreen].bounds.size.width == 414) {
-        button_BianJi.frame = CGRectMake(352, 49, 40, 40);
-        button_QingChu.frame = CGRectMake(352, 112, 40, 40);
-    }
-    if ([UIScreen mainScreen].bounds.size.width == 736) {
-        button_BianJi.frame = CGRectMake(674, 49, 40, 40);
-        button_QingChu.frame = CGRectMake(674, 112, 40, 40);
-    }
     [button_QingChu addTarget:self action:@selector(Self_Button_QingChu_QianMing_Click:) forControlEvents:UIControlEventTouchUpInside];
     [button_BianJi addTarget:self action:@selector(Self_Button_BianJI_QianMing_Click:) forControlEvents:UIControlEventTouchUpInside];
 
     self.signView = [[BJTSignView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     self.signView.Color_with_Next = color_With_Return;
     [self.Self_View_QianMing_Bg addSubview:self.signView];
+    [button_QingChu setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.Self_View_QianMing_Bg addSubview:button_QingChu];
+    [button_BianJi setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.Self_View_QianMing_Bg addSubview:button_BianJi];
+    
+    [self.Self_View_QianMing_Bg addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(40)]-(20)-|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views: @{@"view": button_BianJi}]];
+    [self.Self_View_QianMing_Bg addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(100)-[view(40)]" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views: @{@"view": button_BianJi}]];
+    
+    [self.Self_View_QianMing_Bg addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(40)]-(20)-|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views: @{@"view": button_QingChu}]];
+    [self.Self_View_QianMing_Bg addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(40)]-(100)-|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views: @{@"view": button_QingChu}]];
 }
 
 -(void) UI_QianZi_Click {
@@ -121,7 +107,9 @@
 
 #pragma mark - 返回
 - (IBAction)Self_Button_Pop_Click:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:true completion:^{
+        
+    }];
 }
 
 - (NSString *)getCacheFilePath {
@@ -135,8 +123,6 @@
     [button_QingChu setTitle:@"" forState:UIControlStateNormal];
     [button_QingChu removeFromSuperview];
     [button_BianJi removeFromSuperview];
-    [button_BianJi1 removeFromSuperview];
-    [button_QingChu1 removeFromSuperview];
     
     UIGraphicsBeginImageContext(self.Self_View_QianMing_Bg.bounds.size);
     [self.Self_View_QianMing_Bg.layer renderInContext:UIGraphicsGetCurrentContext()];
@@ -147,7 +133,7 @@
 
     NSString *str_dateStringss_time = @"3333333.png";
 
-    NSDictionary *Dic_Data_mgcon = [NSDictionary dictionaryWithObjectsAndKeys:str_User_Id,@"id",str_dateStringss_time,@"filename", nil];
+    NSDictionary *Dic_Data_mgcon = [NSDictionary dictionaryWithObjectsAndKeys:str_User_Id, @"userId", str_dateStringss_time, @"name", nil];
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
 
@@ -156,34 +142,19 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain", @"multipart/form-data", @"application/json", @"text/html", @"image/jpeg", @"image/png", @"application/octet-stream", @"text/json", nil];
 
     // 在parameters里存放照片以外的对象
-    [manager POST:URL_ShangChuanTuPian parameters:Dic_Data_mgcon constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        // formData: 专门用于拼接需要上传的数据,在此位置生成一个要上传的数据体
-        // 这里的_photoArr是你存放图片的数组
-
+    [manager POST:URL_ADD_SIGN parameters:Dic_Data_mgcon constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (int i = 0; i < 1; i++) {
             NSData *imageData = UIImageJPEGRepresentation(imaView.image, 0.5);
-
-            // 在网络开发中，上传文件时，是文件不允许被覆盖，文件重名
-            // 要解决此问题，
-            // 可以在上传时使用当前的系统事件作为文件名
-
             NSString *fileName = str_dateStringss_time;
-            /*
-             *该方法的参数
-             1. appendPartWithFileData：要上传的照片[二进制流]
-             2. name：对应网站上[upload.php中]处理文件的字段（比如upload）
-             3. fileName：要保存在服务器上的文件名
-             4. mimeType：上传的文件的类型
-             */
-
             NSString *str_name_i = [NSString stringWithFormat:@"upload%i",i];
             [formData appendPartWithFileData:imageData name:str_name_i fileName:fileName mimeType:@"image/jpeg"];
         }
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         NSLog(@"---上传进度--- %@",uploadProgress);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"```上传成功``` %@",responseObject);
-        [self.navigationController popViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:true completion:^{
+            
+        }];
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"上传失败: %@", error);
@@ -198,7 +169,6 @@
 //    [self.Self_View_QianMing_Bg removeFromSuperview];
     [button_BianJi removeFromSuperview];
     [button_QingChu removeFromSuperview];
-    [self qita_button_Click];
     NSArray *nibContents = [[NSBundle mainBundle] loadNibNamed:@"QianMing_YanSeBiCu_View" owner:nil options:nil];
     _QianMing_YanSe_View = [nibContents lastObject];
     _QianMing_YanSe_View.frame = CGRectMake(0, 0, self.Self_View_BianJi_BG.bounds.size.width, 181);
@@ -248,8 +218,6 @@
     NSLog(@"颜色1");
     [_QianMing_YanSe_View removeFromSuperview];
     [self.signView removeFromSuperview];
-    [button_BianJi1 removeFromSuperview];
-    [button_QingChu1 removeFromSuperview];
     Int_Pd_QianMing_DianJiCiShu = 0;
     color_With_Return = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:1];
     [self UI_YanSe_Button_DianJi_XiuGai_Click];
@@ -261,8 +229,6 @@
     Int_Pd_QianMing_DianJiCiShu = 0;
     [_QianMing_YanSe_View removeFromSuperview];
     [self.signView removeFromSuperview];
-    [button_BianJi1 removeFromSuperview];
-    [button_QingChu1 removeFromSuperview];
     color_With_Return = [UIColor colorWithRed:153/255.0f green:153/255.0f blue:153/255.0f alpha:1];
     [self UI_YanSe_Button_DianJi_XiuGai_Click];
 }
@@ -272,8 +238,6 @@
     Int_Pd_QianMing_DianJiCiShu = 0;
     [_QianMing_YanSe_View removeFromSuperview];
     [self.signView removeFromSuperview];
-    [button_BianJi1 removeFromSuperview];
-    [button_QingChu1 removeFromSuperview];
     color_With_Return = [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:1];
     [self UI_YanSe_Button_DianJi_XiuGai_Click];
 }
@@ -283,8 +247,6 @@
     Int_Pd_QianMing_DianJiCiShu = 0;
     [_QianMing_YanSe_View removeFromSuperview];
     [self.signView removeFromSuperview];
-    [button_BianJi1 removeFromSuperview];
-    [button_QingChu1 removeFromSuperview];
 
     color_With_Return = [UIColor colorWithRed:102/255.0f green:45/255.0f blue:145/255.0f alpha:1];
     [self UI_YanSe_Button_DianJi_XiuGai_Click];
@@ -294,8 +256,6 @@
     Int_Pd_QianMing_DianJiCiShu = 0;
     [_QianMing_YanSe_View removeFromSuperview];
     [self.signView removeFromSuperview];
-    [button_BianJi1 removeFromSuperview];
-    [button_QingChu1 removeFromSuperview];
     color_With_Return = [UIColor colorWithRed:41/255.0f green:171/255.0f blue:226/255.0f alpha:1];
     [self UI_YanSe_Button_DianJi_XiuGai_Click];
     
@@ -306,8 +266,6 @@
     Int_Pd_QianMing_DianJiCiShu = 0;
     [_QianMing_YanSe_View removeFromSuperview];
     [self.signView removeFromSuperview];
-    [button_BianJi1 removeFromSuperview];
-    [button_QingChu1 removeFromSuperview];
 
     color_With_Return = [UIColor colorWithRed:57/255.0f green:181/255.0f blue:74/255.0f alpha:1]; [self UI_YanSe_Button_DianJi_XiuGai_Click];
     
@@ -318,8 +276,6 @@
     Int_Pd_QianMing_DianJiCiShu = 0;
     [_QianMing_YanSe_View removeFromSuperview];
     [self.signView removeFromSuperview];
-    [button_BianJi1 removeFromSuperview];
-    [button_QingChu1 removeFromSuperview];
     color_With_Return = [UIColor colorWithRed:247/255.0f green:147/255.0f blue:30/255.0f alpha:1];
     [self UI_YanSe_Button_DianJi_XiuGai_Click];
     
@@ -330,8 +286,6 @@
     Int_Pd_QianMing_DianJiCiShu = 0;
     [_QianMing_YanSe_View removeFromSuperview];
     [self.signView removeFromSuperview];
-    [button_BianJi1 removeFromSuperview];
-    [button_QingChu1 removeFromSuperview];
     color_With_Return = [UIColor colorWithRed:255/255.0f green:0/255.0f blue:0/255.0f alpha:1];
     UILabel *label_lab = [[UILabel alloc]init];
     label_lab.font = [UIFont boldSystemFontOfSize:13];
@@ -345,8 +299,6 @@
     NSLog(@"极细");
     [self.signView removeFromSuperview];
     [_QianMing_YanSe_View removeFromSuperview];
-    [button_BianJi1 removeFromSuperview];
-    [button_QingChu1 removeFromSuperview];
     Int_Pd_QianMing_DianJiCiShu = 0;
     Int_BiCu_Count_Next = 2;
     NSString *str_int_Bifeng = [NSString stringWithFormat:@"%li",Int_BiCu_Count_Next];
@@ -359,8 +311,6 @@
     NSLog(@"细");
     [self.signView removeFromSuperview];
     [_QianMing_YanSe_View removeFromSuperview];
-    [button_BianJi1 removeFromSuperview];
-    [button_QingChu1 removeFromSuperview];
     Int_Pd_QianMing_DianJiCiShu = 0;
     Int_BiCu_Count_Next = 5;
     NSString *str_int_Bifeng = [NSString stringWithFormat:@"%li",Int_BiCu_Count_Next];
@@ -372,8 +322,6 @@
     NSLog(@"中");
     [self.signView removeFromSuperview];
     [_QianMing_YanSe_View removeFromSuperview];
-    [button_BianJi1 removeFromSuperview];
-    [button_QingChu1 removeFromSuperview];
 
     Int_Pd_QianMing_DianJiCiShu = 0;
     Int_BiCu_Count_Next = 8;
@@ -385,8 +333,6 @@
 -(void) View_Button_BiCu_4_Click {
     [self.signView removeFromSuperview];
     [_QianMing_YanSe_View removeFromSuperview];
-    [button_BianJi1 removeFromSuperview];
-    [button_QingChu1 removeFromSuperview];
     Int_Pd_QianMing_DianJiCiShu = 0;
     Int_BiCu_Count_Next = 10;
     NSString *str_int_Bifeng = [NSString stringWithFormat:@"%li",Int_BiCu_Count_Next];
@@ -398,41 +344,10 @@
 - (void)Self_Button_QingChu_QianMing_Click:(id)sender { NSLog(@"清除");
     [self.signView removeFromSuperview];
     [_QianMing_YanSe_View removeFromSuperview];
-    [button_BianJi1 removeFromSuperview];
-    [button_QingChu1 removeFromSuperview];
     [button_BianJi removeFromSuperview];
     [button_QingChu removeFromSuperview];
     [self UI_YanSe_Button_DianJi_XiuGai_Click];
 
-}
-
--(void) qita_button_Click {
-    button_BianJi1 = [UIButton buttonWithType:UIButtonTypeSystem];
-    [button_BianJi1 setBackgroundImage:[UIImage imageNamed:@"tianjiaQianMing.png"] forState:UIControlStateNormal];
-    button_QingChu1 = [UIButton buttonWithType:UIButtonTypeSystem];
-    [button_QingChu1 setTitle:@"清除" forState:UIControlStateNormal]; if ([UIScreen mainScreen].bounds.size.width == 320) {
-        button_BianJi1.frame = CGRectMake(258, 49, 40, 40);
-        button_QingChu1.frame = CGRectMake(258, 112, 40, 40);
-    } if ([UIScreen mainScreen].bounds.size.width == 568) {
-        button_BianJi1.frame = CGRectMake(506, 49, 40, 40);
-        button_QingChu1.frame = CGRectMake(506, 112, 40, 40);
-    } if ([UIScreen mainScreen].bounds.size.width == 375) {
-        button_BianJi1.frame = CGRectMake(313, 49, 40, 40);
-        button_QingChu1.frame = CGRectMake(313, 112, 40, 40);
-    } if ([UIScreen mainScreen].bounds.size.width == 667) {
-        button_BianJi1.frame = CGRectMake(605, 49, 40, 40);
-        button_QingChu1.frame = CGRectMake(605, 112, 40, 40);
-    } if ([UIScreen mainScreen].bounds.size.width == 812) {
-        button_BianJi1.frame = CGRectMake(662, 49, 40, 40);
-        button_QingChu1.frame = CGRectMake(662, 112, 40, 40);
-    } if ([UIScreen mainScreen].bounds.size.width == 414) {
-        button_BianJi1.frame = CGRectMake(352, 49, 40, 40);
-        button_QingChu1.frame = CGRectMake(352, 112, 40, 40);
-    } if ([UIScreen mainScreen].bounds.size.width == 736) {
-        button_BianJi1.frame = CGRectMake(674, 49, 40, 40);
-        button_QingChu1.frame = CGRectMake(674, 112, 40, 40);
-    } [button_QingChu1 addTarget:self action:@selector(Self_Button_QingChu_QianMing_Click:) forControlEvents:UIControlEventTouchUpInside]; [button_BianJi1 addTarget:self action:@selector(Self_Button_BianJI_QianMing_Click:) forControlEvents:UIControlEventTouchUpInside]; [self.Self_View_QianMing_Bg addSubview:button_QingChu1];
-    [self.Self_View_QianMing_Bg addSubview:button_BianJi1];
 }
 
 @end

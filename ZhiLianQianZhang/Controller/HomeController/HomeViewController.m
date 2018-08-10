@@ -10,6 +10,8 @@
 #import "WXApi.h"
 #import "AppDelegate.h"
 #import "ZhuYeMianViewController.h"
+#import "DataService.h"
+#import "Header.h"
 
 @interface HomeViewController () <WXApiDelegate,TencentSessionDelegate> {
     NSArray *_permissionArray;
@@ -30,12 +32,10 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    
+    [super viewWillAppear:animated];
     NSUserDefaults *User_Defaul_Q = [NSUserDefaults standardUserDefaults];
-    
     dic_User_Defaul = [User_Defaul_Q objectForKey:@"User"];
-    
-    NSLog(@"%@",dic_User_Defaul);
+    NSLog(@"用户信息：%@",dic_User_Defaul);
 }
 
 - (IBAction)Self_Button_WeiXin_Click:(id)sender {
@@ -73,7 +73,8 @@
 - (void)tencentDidLogin
 {
     if ([self.tencentOAuth accessToken]) {
-        //[self.tencentOAuth getUserInfo];
+        NSLog(@"qq登录成功");
+        [self.tencentOAuth getUserInfo];
         
         ZhuYeMianViewController *ZhuYe_Countroller = [[ZhuYeMianViewController alloc]init];
         [self.navigationController pushViewController:ZhuYe_Countroller animated:YES];
@@ -84,9 +85,33 @@
     
 }
 
--(void)getUserInfoResponse:(APIResponse *)response
-{
-    NSLog(@"respons:%@",response.jsonResponse);
+-(void)getUserInfoResponse:(APIResponse *)response {
+    NSLog(@"response:%@;[%@]",response.jsonResponse, self.tencentOAuth.openId);
+    NSString *nickname = [response.jsonResponse objectForKey: @"nickname"];
+    NSDictionary *dic_S_T = [NSDictionary dictionaryWithObjectsAndKeys:self.tencentOAuth.openId ,@"openId", nickname, @"nickname", nil];
+    [DataService requestDataWithURL:URL_DengLU_ withMethod:@"POST" withParames:dic_S_T withResult:^(id result) {
+        
+        NSDictionary *dicsss = result;
+        NSLog(@"登录返回的数据：%@",dicsss);
+        NSInteger code = [[dicsss objectForKey:@"code"] integerValue];
+        if (code == 200) {
+            NSDictionary *dic_data = [dicsss objectForKey:@"user"];
+            NSString *str_id = [NSString stringWithFormat:@"%@",[dic_data objectForKey:@"id"]];
+            NSString *str_isNewRecord = [NSString stringWithFormat:@"%@",[dic_data objectForKey:@"isNewRecord"]];
+            NSString *str_level = [NSString stringWithFormat:@"%@",[dic_data objectForKey:@"level"]];
+            NSString *str_openid = [NSString stringWithFormat:@"%@",[dic_data objectForKey:@"openid"]];
+            NSString *str_point = [NSString stringWithFormat:@"%@",[dic_data objectForKey:@"point"]];
+            NSString *str_nickname = [NSString stringWithFormat:@"%@",nickname];
+            NSLog(@"nickname: %@",str_nickname);
+            NSString *str_headimgurl = [NSString stringWithFormat:@"%@",[response.jsonResponse objectForKey:@"figureurl"]];
+            NSString *string_unionid = [dicsss objectForKey:@"card"];
+            NSLog(@"string_unionid: %@",string_unionid);
+            NSUserDefaults *User_Defaul_Data = [NSUserDefaults standardUserDefaults];
+            NSDictionary *dic_User_B = [NSDictionary dictionaryWithObjectsAndKeys:str_id,@"id",str_isNewRecord,@"isNewRecord",str_level,@"level",str_openid,@"openid",str_point,@"point",str_nickname,@"name",str_headimgurl,@"image",string_unionid,@"unionid", nil];
+            NSLog(@"dic_User_B: %@",dic_User_B);
+            [User_Defaul_Data setObject:dic_User_B forKey:@"User"];
+        }
+    }];
 }
 
 #pragma mark - 体验一下
